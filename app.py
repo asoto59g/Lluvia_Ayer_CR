@@ -44,7 +44,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # RUTA ANTERIOR:
-# ARCHIVO_RECORTE_GEOJSON = "cri.geojson"
+# ARCHIVO_RECORTE_GEOJSON = "CRI.geojson"
 
 # RUTA ABSOLUTA SEGURA:
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
