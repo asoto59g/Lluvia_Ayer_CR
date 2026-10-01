@@ -68,6 +68,16 @@ def _detect_date_column(df: pd.DataFrame) -> str:
     return best_col
 
 # ----------------------------------------------------------------------
+# Helper: robust CSV reader (UTF‑8 → latin‑1 fallback)
+def _read_csv_robust(path: str) -> pd.DataFrame:
+    """Lee un CSV intentando UTF‑8 y, si falla, vuelve a intentar con latin‑1.
+    Devuelve un DataFrame con todas las columnas como string."""
+    try:
+        return pd.read_csv(path, dtype=str, encoding='utf-8')
+    except UnicodeDecodeError:
+        return pd.read_csv(path, dtype=str, encoding='latin-1')
+
+# ----------------------------------------------------------------------
 # Generación del mapa Thiessen
 # ----------------------------------------------------------------------
 def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "mapa_lluvia.html"):
