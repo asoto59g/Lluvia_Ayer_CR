@@ -1,0 +1,8 @@
+pandas>=2.2
+numpy>=2.0
+geopandas>=0.14
+shapely>=2.0
+matplotlib>=3.9
+playwright>=1.44
+pytesseract>=0.3
+requests>=2.32

@@ -1,0 +1,50 @@
+name: Scraper Diario Lluvia IMN Costa Rica
+
+on:
+  schedule:
+    # 15:00 UTC = 09:00 AM Hora Costa Rica (UTC-6 sin cambio de horario)
+    - cron: '0 15 * * *'
+  workflow_dispatch: # Permite ejecutar el flujo manualmente desde la interfaz de GitHub Actions
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar dependencias del sistema (Tesseract OCR con soporte en español)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-spa
+
+      - name: Instalar dependencias de Python
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas numpy pillow pytesseract playwright geopandas shapely matplotlib openpyxl
+
+      - name: Instalar navegadores Playwright
+        run: |
+          playwright install --with-deps chromium
+
+      - name: Ejecutar Scraper V3
+        run: |
+          python scraper_v3.py
+
+      - name: Confirmar y subir datos actualizados al repositorio
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add lluviadiaria.csv histlluviadiaria.csv
+          git commit -m "Cron: Actualización de lluvia IMN [$(date -u +'%Y-%m-%d')]" || echo "No hay cambios nuevos para confirmar"
+          git push

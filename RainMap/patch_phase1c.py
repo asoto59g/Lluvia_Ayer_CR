@@ -1,0 +1,35 @@
+with open('scraper_v2.py', 'r', encoding='utf-8') as f:
+    content = f.read()
+
+# 3. Add new OCR fields to Config class
+old_ocr_config = '''    # OCR
+    ocr_lang: str = "spa"
+    ocr_psm_primary: int = 6
+    ocr_psm_fallback: int = 11
+    ocr_upscale_factor: float = 2.5
+    ocr_contrast_factor: float = 2.0
+
+    def __post_init__(self):'''
+
+new_ocr_config = '''    # OCR
+    ocr_lang: str = "spa"
+    ocr_psm_primary: int = 6
+    ocr_psm_fallback: int = 11
+    ocr_upscale_factor: float = 2.5
+    ocr_contrast_factor: float = 2.0
+
+    # OCR Avanzado (Fase 1)
+    ocr_enable_multi_pipeline: bool = True
+    ocr_enable_layout_detection: bool = True
+    ocr_enable_sauvola: bool = False
+    ocr_min_score_threshold: int = 50
+    ocr_pipelines: List[str] = field(default_factory=lambda: ["v1", "v2", "v4"])
+
+    def __post_init__(self):'''
+
+content = content.replace(old_ocr_config, new_ocr_config)
+
+with open('scraper_v2.py', 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Step 3: Config OCR fields added")
