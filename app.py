@@ -22,12 +22,14 @@ Archivos esperados en la misma carpeta:
 import os
 import logging
 import calendar
+import json
 from datetime import datetime
 
 import pandas as pd
 import numpy as np
 import geopandas as gpd
 import streamlit as st
+import streamlit.components.v1 as components
 
 from shapely.geometry import Polygon, Point, box
 from shapely.validation import make_valid
@@ -78,13 +80,11 @@ def obtener_limite_costa_rica(geojson_path: str = ARCHIVO_RECORTE_GEOJSON) -> gp
         if cr_gdf is None or cr_gdf.empty:
             return None
 
-        # Asegurar sistema de referencia WGS84
         if cr_gdf.crs is None:
             cr_gdf = cr_gdf.set_crs(epsg=4326)
         else:
             cr_gdf = cr_gdf.to_crs(epsg=4326)
 
-        # Unificar polígonos y sanear geometrías
         cr_gdf = cr_gdf.dissolve()
         cr_gdf["geometry"] = cr_gdf["geometry"].apply(
             lambda g: make_valid(g) if g is not None else None
@@ -149,18 +149,15 @@ def generar_poligonos_voronoi_recortados(
     """
     coords = np.array([(geom.x, geom.y) for geom in gdf_puntos_proj.geometry], dtype=float)
 
-    # 1. Definir extensión espacial de trabajo
     if cr_boundary_proj is not None and not cr_boundary_proj.empty:
         bounds = cr_boundary_proj.total_bounds
     else:
         bounds = gdf_puntos_proj.total_bounds
 
-    # Margen amplio para cerrar regiones infinitas de Voronoi
-    margin = 300000.0  # 300 km en metros
+    margin = 300000.0
     minx, miny, maxx, maxy = bounds[0] - margin, bounds[1] - margin, bounds[2] + margin, bounds[3] + margin
     bbox = box(minx, miny, maxx, maxy)
 
-    # 2. Agregar puntos auxiliares lejanos para forzar el cierre de todas las celdas
     far_points = np.array([
         [minx, miny],
         [minx, maxy],
@@ -171,7 +168,6 @@ def generar_poligonos_voronoi_recortados(
     all_coords = np.vstack([coords, far_points])
     vor = Voronoi(all_coords)
 
-    # 3. Construir geometrías cerradas de Voronoi
     vor_polygons = []
     for i in range(len(coords)):
         region_idx = vor.point_region[i]
@@ -186,25 +182,21 @@ def generar_poligonos_voronoi_recortados(
         if not poly.is_valid:
             poly = make_valid(poly)
 
-        # Recortar previamente con la caja externa
         poly = poly.intersection(bbox)
         if not poly.is_empty:
             vor_polygons.append(poly)
 
     gdf_voronoi = gpd.GeoDataFrame(geometry=vor_polygons, crs=gdf_puntos_proj.crs)
 
-    # 4. Join espacial para asignar los atributos del punto correspondiente a cada polígono
     gdf_voronoi = gpd.sjoin(gdf_voronoi, gdf_puntos_proj, how="inner", predicate="intersects")
     gdf_voronoi = gdf_voronoi.drop(columns=["index_right"], errors="ignore")
 
-    # 5. RECORTE ESTRICTO CONTRA COSTA RICA
     if cr_boundary_proj is not None and not cr_boundary_proj.empty:
         try:
             gdf_voronoi["geometry"] = gdf_voronoi["geometry"].apply(make_valid)
             cr_clean = cr_boundary_proj.copy()
             cr_clean["geometry"] = cr_clean["geometry"].apply(make_valid)
 
-            # Overlay por intersección espacial exacta
             gdf_voronoi = gpd.overlay(gdf_voronoi, cr_clean, how="intersection")
         except Exception as err:
             logger.warning(f"Error durante la intersección con Costa Rica: {err}")
@@ -232,7 +224,6 @@ def generar_mapa_con_thiessen(
 
     columna_fecha = detectar_columna_fecha(df)
 
-    # Conversión flexible multiformato (mixed)
     df_temp_fecha = pd.to_datetime(df[columna_fecha], errors="coerce", format="mixed").dt.normalize()
     fecha_objetivo = pd.to_datetime(fecha, errors="coerce", format="mixed").normalize()
 
@@ -244,7 +235,6 @@ def generar_mapa_con_thiessen(
     if df_filtrado.empty:
         raise ValueError(f"No hay datos para la fecha {fecha}.")
 
-    # Restar 1 día a la fecha_lectura/fecha_datos para mostrar el día correspondiente en el título
     col_fecha_ref = "fecha_lectura" if "fecha_lectura" in df_filtrado.columns else ("fecha_datos" if "fecha_datos" in df_filtrado.columns else columna_fecha)
     if col_fecha_ref in df_filtrado.columns and not df_filtrado[col_fecha_ref].dropna().empty:
         fecha_dt = pd.to_datetime(df_filtrado[col_fecha_ref].dropna().iloc[0], errors="coerce", format="mixed")
@@ -272,30 +262,24 @@ def generar_mapa_con_thiessen(
 
     df_filtrado = df_filtrado.drop_duplicates(subset=["lon", "lat"]).reset_index(drop=True)
 
-    # 1. GeoDataFrame de puntos en WGS84
     gdf_puntos = gpd.GeoDataFrame(
         df_filtrado,
         geometry=gpd.points_from_xy(df_filtrado["lon"], df_filtrado["lat"]),
         crs="EPSG:4326"
     )
 
-    # 2. Convertir a proyección oficial CRTM05 (EPSG:5367) en metros
     gdf_puntos_proj = gdf_puntos.to_crs(epsg=5367)
 
-    # 3. Obtener perímetro de Costa Rica proyectado en CRTM05 desde el GeoJSON local
     cr_boundary = obtener_limite_costa_rica(geojson_path)
     if cr_boundary is not None and not cr_boundary.empty:
         cr_boundary_proj = cr_boundary.to_crs(epsg=5367)
     else:
         cr_boundary_proj = None
 
-    # 4. Generar polígonos Thiessen recortados
     gdf_thiessen_proj = generar_poligonos_voronoi_recortados(gdf_puntos_proj, cr_boundary_proj)
 
-    # 5. Volver a proyectar a WGS84 para exportar
     gdf_thiessen = gdf_thiessen_proj.to_crs(epsg=4326)
 
-    # Limpiar columnas con geometrías duplicadas o secundarias
     cols_to_drop = [
         col for col in gdf_thiessen.columns
         if col != gdf_thiessen.geometry.name and isinstance(gdf_thiessen[col].dtype, gpd.array.GeometryDtype)
@@ -311,9 +295,6 @@ def generar_mapa_con_thiessen(
     geojson_thiessen = gdf_thiessen_export.to_json(ensure_ascii=False)
     geojson_puntos = gdf_puntos_export.to_json(ensure_ascii=False)
 
-    # ----------------------------------------------------
-    # PLANTILLA INTERACTIVA HTML (LEAFLET)
-    # ----------------------------------------------------
     html_template = """
 <!DOCTYPE html>
 <html lang="es">
@@ -705,7 +686,7 @@ if (capaVoronoi.getBounds().isValid()) {
 
 
 # ============================================================
-# INTERFAZ STREAMLIT CON CALENDARIO A ESCALA 0.25 (25% TAMAÑO)
+# INTERFAZ STREAMLIT CON CALENDARIO RESPONSIVO
 # ============================================================
 
 def run_streamlit():
@@ -716,26 +697,7 @@ def run_streamlit():
         layout="wide"
     )
 
-    # Inyección CSS con factor 0.25 para escalar exactamente al 25%
-    st.markdown("""
-        <style>
-        .compact-cal-25 {
-            transform: scale(0.25);
-            transform-origin: top left;
-            width: 400%; /* Compensar ancho por reducción al 25% */
-            margin-bottom: -180px;
-        }
-        .stButton button {
-            padding: 1px 3px !important;
-            font-size: 9px !important;
-            min-height: 20px !important;
-            margin: 0px !important;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-
     st.title("🌧️ Mapa de Lluvia - Polígonos Thiessen (Costa Rica)")
-    st.caption("Intersección exacta recortada con archivo local cri.geojson")
 
     if not os.path.exists(ARCHIVO_RECORTE_GEOJSON):
         st.error(f"⚠️ No se encontró el archivo de recorte local `{ARCHIVO_RECORTE_GEOJSON}` en la carpeta de ejecución.")
@@ -747,123 +709,71 @@ def run_streamlit():
         csv_path = "lluviadiaria.csv"
     else:
         st.error("No se encontró el archivo de datos.")
-        st.write("Debe existir uno de los siguientes archivos en el directorio:")
-        st.code("histlluviadiaria.csv\nlluviadiaria.csv")
         return
 
     try:
         df_dates = leer_csv_robusto(csv_path)
         columna_fecha = detectar_columna_fecha(df_dates)
 
-        # Extraer fechas únicas y normalizarlas
         fechas_dt = (
             pd.to_datetime(df_dates[columna_fecha], errors="coerce", format="mixed")
             .dt.normalize()
             .dropna()
             .unique()
         )
-        fechas_unicas_str = set(f.strftime("%Y-%m-%d") for f in fechas_dt)
-        fechas_list = sorted(list(fechas_dt))
+        fechas_unicas_str = sorted(list(set(f.strftime("%Y-%m-%d") for f in fechas_dt)))
 
     except Exception as error:
         st.error("Error al leer las fechas del CSV.")
         st.exception(error)
         return
 
-    if not fechas_list:
+    if not fechas_unicas_str:
         st.error("No se encontraron fechas válidas.")
         return
 
-    # Inicialización de variables de estado
-    if "fecha_seleccionada" not in st.session_state:
-        st.session_state["fecha_seleccionada"] = fechas_list[-1].strftime("%Y-%m-%d")
+    # Usar el selector de fecha nativo tipo DateInput pero restringido a los días del CSV
+    st.subheader("📅 Selección de Fecha")
 
-    fecha_actual_dt = pd.to_datetime(st.session_state["fecha_seleccionada"])
+    col_sel, col_info = st.columns([1, 2])
 
-    if "anio_sel" not in st.session_state:
-        st.session_state["anio_sel"] = fecha_actual_dt.year
-    if "mes_sel" not in st.session_state:
-        st.session_state["mes_sel"] = fecha_actual_dt.month
+    with col_sel:
+        # Convertir lista a objetos de fecha
+        fechas_obj = [datetime.strptime(f, "%Y-%m-%d").date() for f in fechas_unicas_str]
+        min_date = min(fechas_obj)
+        max_date = max(fechas_obj)
 
-    # ----------------------------------------------------
-    # CONTENEDOR DE SELECCIÓN REDUCIDO A FACTOR 0.25
-    # ----------------------------------------------------
-    st.markdown('<div class="compact-cal-25">', unsafe_allow_html=True)
-    
-    st.markdown("### 📅 Selección de Fecha")
+        fecha_elegida = st.date_input(
+            "Selecciona un día del calendario:",
+            value=max_date,
+            min_value=min_date,
+            max_value=max_date,
+            help="Selecciona año/mes en la parte superior del desplegable"
+        )
 
-    # 1. Selector de Año
-    anios_disponibles = sorted(list(set(f.year for f in fechas_list)), reverse=True)
-    cols_anio = st.columns(len(anios_disponibles) + 4)
-    cols_anio[0].write("**Año:**")
-    for idx, a in enumerate(anios_disponibles):
-        btn_type = "primary" if a == st.session_state["anio_sel"] else "secondary"
-        if cols_anio[idx + 1].button(str(a), key=f"btn_a_{a}", type=btn_type):
-            st.session_state["anio_sel"] = a
-            st.rerun()
+    fecha_str = fecha_elegida.strftime("%Y-%m-%d")
 
-    # 2. Selector de Meses
-    meses_nombres_cortos = {
-        1: "Ene", 2: "Feb", 3: "Mar", 4: "Abr", 5: "May", 6: "Jun",
-        7: "Jul", 8: "Ago", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dic"
-    }
-
-    cols_meses = st.columns(13)
-    cols_meses[0].write("**Mes:**")
-    for m in range(1, 13):
-        tiene_datos_mes = any(f.year == st.session_state["anio_sel"] and f.month == m for f in fechas_list)
-        btn_type = "primary" if m == st.session_state["mes_sel"] else "secondary"
-        
-        if cols_meses[m].button(meses_nombres_cortos[m], key=f"btn_m_{m}", type=btn_type, disabled=not tiene_datos_mes):
-            st.session_state["mes_sel"] = m
-            st.rerun()
-
-    # 3. Calendario Mensual
-    dias_semana = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
-    cols_dias = st.columns(7)
-    for idx, dia_nom in enumerate(dias_semana):
-        cols_dias[idx].caption(f"**{dia_nom}**")
-
-    cal = calendar.monthcalendar(st.session_state["anio_sel"], st.session_state["mes_sel"])
-
-    for semana in cal:
-        cols = st.columns(7)
-        for idx, dia in enumerate(semana):
-            if dia == 0:
-                cols[idx].write("")
-            else:
-                fecha_curr_str = f"{st.session_state['anio_sel']:04d}-{st.session_state['mes_sel']:02d}-{dia:02d}"
-                tiene_datos = fecha_curr_str in fechas_unicas_str
-                es_seleccionada = fecha_curr_str == st.session_state["fecha_seleccionada"]
-                
-                if tiene_datos:
-                    label = f"🟢 {dia}" if not es_seleccionada else f"⭐ {dia}"
-                    btn_t = "primary" if es_seleccionada else "secondary"
-                    if cols[idx].button(label, key=f"btn_d_{fecha_curr_str}", type=btn_t):
-                        st.session_state["fecha_seleccionada"] = fecha_curr_str
-                        st.rerun()
-                else:
-                    cols[idx].button(f"{dia}", key=f"btn_d_{fecha_curr_str}", disabled=True)
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # ----------------------------------------------------
-    # DESPLIEGUE DEL MAPA
-    # ----------------------------------------------------
-    fecha_act = st.session_state["fecha_seleccionada"]
-    st.info(f"📆 **Fecha activa seleccionada para generar mapa:** `{fecha_act}`")
+    with col_info:
+        if fecha_str in fechas_unicas_str:
+            st.success(f"🟢 **Fecha seleccionada con registros:** `{fecha_str}`")
+        else:
+            st.warning(f"⚠️ No hay registros para la fecha `{fecha_str}`. Seleccione un día válido.")
 
     if st.button("🗺️ Generar / Actualizar mapa", type="primary", use_container_width=True):
+        if fecha_str not in fechas_unicas_str:
+            st.error("Por favor selecciona una fecha válida que contenga registros de lluvia.")
+            return
+
         with st.spinner("Procesando geometrías y recortando con cri.geojson..."):
             try:
                 output_file = generar_mapa_con_thiessen(
                     csv_path=csv_path,
-                    fecha=fecha_act,
+                    fecha=fecha_str,
                     geojson_path=ARCHIVO_RECORTE_GEOJSON,
                     output_html="mapa_lluvia.html"
                 )
 
-                st.success("✅ Mapa generado y recortado correctamente.")
+                st.success("✅ Mapa generado correctamente.")
 
                 with open(output_file, "r", encoding="utf-8") as archivo:
                     html_content = archivo.read()
