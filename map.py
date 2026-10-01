@@ -76,7 +76,7 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
     - `fecha`: string con la fecha a filtrar (formato ISO o equivalente).
     - `output_html`: nombre del archivo HTML resultante.
     """
-    df = pd.read_csv(csv_path, dtype=str)
+    df = _read_csv_robust(csv_path)
     # Detectar la columna de fechas y convertirla a datetime
     date_col = _detect_date_column(df)
     df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
@@ -220,3 +220,13 @@ if __name__ == "__main__":
     except Exception as exc:
         st.error("❗️ Se produjo un error inesperado en la aplicación.")
         st.code(str(exc))
+
+
+def _read_csv_robust(path: str) -> pd.DataFrame:
+    """Lee un CSV intentando UTF‑8 y, si falla, vuelve a intentar con latin‑1.
+    Devuelve un DataFrame con todas las columnas como string.
+    """
+    try:
+        return pd.read_csv(path, dtype=str, encoding='utf-8')
+    except UnicodeDecodeError:
+        return pd.read_csv(path, dtype=str, encoding='latin-1')
