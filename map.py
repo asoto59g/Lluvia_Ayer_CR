@@ -115,11 +115,17 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
     from scipy.spatial import Voronoi, QhullError
     import numpy as np
     from shapely.geometry import Point, MultiPoint
-    coords = np.array([(p.x, p.y) for p in gdf.geometry])
-    # Si hay menos de 3 puntos, no se puede construir un Voronoi significativo
+    # Extraer coordenadas y filtrar valores no finitos
+    raw_coords = np.array([(p.x, p.y) for p in gdf.geometry])
+    # Mantener solo filas donde ambas coordenadas son finitas
+    valid_mask = np.isfinite(raw_coords).all(axis=1)
+    coords = raw_coords[valid_mask]
+    # Eliminar puntos duplicados (pueden causar Qhull problemas)
+    if len(coords) > 0:
+        coords = np.unique(coords, axis=0)
+    # Si después del filtrado hay menos de 3 puntos, usar fallback
     if len(coords) < 3:
-        # Usar un pequeño buffer alrededor de cada punto como polígono fallback
-        polygons = [geom.buffer(1) for geom in gdf.geometry]
+        polygons = [geom.buffer(1) for geom in gdf.geometry.iloc[valid_mask].reset_index(drop=True)]
     else:
         try:
             vor = Voronoi(coords)
