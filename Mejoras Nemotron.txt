@@ -1,6 +1,0 @@
-Archivos generados:
-coordenadas_estaciones_refinadas.csv - Coordenadas decimales refinadas
-parser_coords_final.py - Módulo reutilizable de parsing OCR robusto
-extraer_coordenadas_v2.py - Script principal de extracción
-Resultados de calidad:
-113/154 estaciones con latitud Y longitud válidas
