@@ -111,20 +111,35 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
     # Crear polígonos Thiessen (Voronoi) en proyección plana
     gdf = gdf.to_crs(epsg=3857)
     points = gdf.geometry.unary_union
-    from scipy.spatial import Voronoi
+    # Robust Voronoi creation with handling for degenerate cases
+    from scipy.spatial import Voronoi, QhullError
     import numpy as np
+    from shapely.geometry import Point, MultiPoint
     coords = np.array([(p.x, p.y) for p in gdf.geometry])
-    vor = Voronoi(coords)
-    # Construir polígonos a partir de los vértices del Voronoi
-    polygons = []
-    for region_idx in vor.point_region:
-        vertices = vor.regions[region_idx]
-        if -1 in vertices or len(vertices) == 0:
-            # Región infinita, la ignoramos
-            polygons.append(Polygon())
-            continue
-        poly_coords = [vor.vertices[i] for i in vertices]
-        polygons.append(Polygon(poly_coords))
+    # Si hay menos de 3 puntos, no se puede construir un Voronoi significativo
+    if len(coords) < 3:
+        # Usar un pequeño buffer alrededor de cada punto como polígono fallback
+        polygons = [geom.buffer(1) for geom in gdf.geometry]
+    else:
+        try:
+            vor = Voronoi(coords)
+        except QhullError:
+            # Falla de Qhull (puntos colineales, coincidencias, etc.)
+            # Utilizar el convex hull de todos los puntos como polígono único
+            hull = MultiPoint([geom for geom in gdf.geometry]).convex_hull
+            polygons = [hull] * len(gdf)
+        else:
+            # Construir polígonos a partir de los vértices del Voronoi
+            polygons = []
+            for region_idx in vor.point_region:
+                vertices = vor.regions[region_idx]
+                if -1 in vertices or len(vertices) == 0:
+                    # Región infinita: crear un gran buffer alrededor del punto
+                    point_coords = vor.points[region_idx]
+                    polygons.append(Point(point_coords).buffer(1e6))
+                    continue
+                poly_coords = [vor.vertices[i] for i in vertices]
+                polygons.append(Polygon(poly_coords))
     gdf["thiessen"] = polygons
     gdf = gdf.set_geometry("thiessen")
     # Volver a EPSG:4326 para el HTML
