@@ -97,8 +97,9 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
     if df_filtrado.empty:
         raise ValueError(f"No hay datos para la fecha {fecha}")
     # Convertir coordenadas a puntos geográficos
-    df_filtrado["lon"] = pd.to_numeric(df_filtrado["lon"], errors='coerce')
-    df_filtrado["lat"] = pd.to_numeric(df_filtrado["lat"], errors='coerce')
+    # Convertir coordenadas a puntos geográficos usando columnas existentes
+    df_filtrado["lon"] = pd.to_numeric(df_filtrado["Longitud_Decimal"], errors='coerce')
+    df_filtrado["lat"] = pd.to_numeric(df_filtrado["Latitud_Decimal"], errors='coerce')
     gdf = gpd.GeoDataFrame(
         df_filtrado,
         geometry=gpd.points_from_xy(df_filtrado["lon"], df_filtrado["lat"]),
