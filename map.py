@@ -20,6 +20,7 @@ import numpy as np
 import geopandas as gpd
 from shapely.geometry import Polygon, Point, MultiPoint
 import streamlit as st
+from scipy.spatial import Voronoi, QhullError
 
 # ----------------------------------------------------------------------
 # Configuración básica
