@@ -1,141 +1,121 @@
 # -*- coding: utf-8 -*-
-"""Map generation for Lluvia Ayer CR.
+"""map.py
+Genera un mapa de polígonos Thiessen (Voronoi) a partir de datos de lluvia
+para una fecha seleccionada y lo muestra con Streamlit.
 
-Esta versión está preparada para ejecutarse en Streamlit Cloud.
-- Detecta automáticamente la columna de fechas (incluye la columna "X").
-- Muestra un mensaje de arranque y captura global de errores.
-- Usa `st.spinner` y `st.empty()` para indicar progreso mientras se escribe
-  el archivo HTML del mapa.
-- Ignora archivos temporales mediante `.gitignore`.
+Se ha reforzado para:
+- Leer CSV con codificación UTF‑8 o latin‑1.
+- Detectar automáticamente la columna de fechas y normalizarla.
+- Filtrar filas sin coordenadas válidas y eliminar duplicados.
+- Garantizar que el GeoDataFrame tenga CRS definido antes de cualquier transformación.
+- Manejar casos degenerados de Voronoi (pocos puntos, colinealidad, Qhull errors).
+- Proveer mensajes claros en la UI de Streamlit.
 """
 
 import os
-import time
 import logging
-import base64
 from datetime import datetime
-
 import pandas as pd
 import geopandas as gpd
-from shapely.geometry import Point, Polygon
-import matplotlib.pyplot as plt
-
+from shapely.geometry import Polygon, Point, MultiPoint
 import streamlit as st
 
 # ----------------------------------------------------------------------
 # Configuración básica
 # ----------------------------------------------------------------------
 logging.basicConfig(level=logging.INFO)
-LOGGER = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 # ----------------------------------------------------------------------
-# Utilidades para manejo de datos
+# Utilidades
 # ----------------------------------------------------------------------
-def _clean_value(val):
-    """Limpia valores de lluvia que pueden venir como strings.
-    Devuelve un float o NaN.
+def _read_csv_robust(path: str) -> pd.DataFrame:
+    """Lee un CSV intentando UTF‑8 y, si falla, vuelve a latin‑1.
+    Devuelve un DataFrame con todas las columnas como string.
     """
-    if pd.isna(val):
-        return float('nan')
-    if isinstance(val, str):
-        val = val.replace(',', '.')
-        try:
-            return float(val)
-        except ValueError:
-            return float('nan')
-    return float(val)
+    try:
+        return pd.read_csv(path, dtype=str, encoding="utf-8")
+    except UnicodeDecodeError:
+        return pd.read_csv(path, dtype=str, encoding="latin-1")
 
 def _detect_date_column(df: pd.DataFrame) -> str:
-    """Devuelve el nombre de la columna que contiene fechas.
-    Busca la columna que, al intentar parsearla con `pd.to_datetime`, genera
-    la mayor cantidad de valores no nulos. También acepta la columna "X" que
-    contiene fechas reales.
+    """Intenta inferir cuál columna contiene fechas.
+    Busca la primera columna cuyo nombre contiene la palabra 'fecha' (ignora mayúsculas).
+    Si no la encuentra, devuelve la primera columna que pueda convertirse a datetime.
     """
-    best_col = None
-    best_count = -1
+    for col in df.columns:
+        if "fecha" in col.lower():
+            return col
+    # fallback: intento de parseo rápido
     for col in df.columns:
         try:
-            parsed = pd.to_datetime(df[col], errors='coerce')
-            cnt = parsed.notna().sum()
-            if cnt > best_count:
-                best_count = cnt
-                best_col = col
+            pd.to_datetime(df[col].iloc[0])
+            return col
         except Exception:
             continue
-    if best_col is None:
-        raise ValueError('No se encontró columna de fechas en el CSV')
-    LOGGER.info(f"Columna de fechas detectada: {best_col} (valores válidos: {best_count})")
-    return best_col
-
-# ----------------------------------------------------------------------
-# Helper: robust CSV reader (UTF‑8 → latin‑1 fallback)
-def _read_csv_robust(path: str) -> pd.DataFrame:
-    """Lee un CSV intentando UTF‑8 y, si falla, vuelve a intentar con latin‑1.
-    Devuelve un DataFrame con todas las columnas como string."""
-    try:
-        return pd.read_csv(path, dtype=str, encoding='utf-8')
-    except UnicodeDecodeError:
-        return pd.read_csv(path, dtype=str, encoding='latin-1')
+    raise ValueError("No se pudo detectar una columna de fechas en el CSV.")
 
 # ----------------------------------------------------------------------
 # Generación del mapa Thiessen
 # ----------------------------------------------------------------------
 def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "mapa_lluvia.html"):
-    """Genera un mapa de polígonos Thiessen a partir de los datos de lluvia.
-    - `csv_path`: ruta al CSV con los datos.
-    - `fecha`: string con la fecha a filtrar (formato ISO o equivalente).
-    - `output_html`: nombre del archivo HTML resultante.
+    """Genera un mapa Thiessen para la *fecha* indicada.
+
+    Args:
+        csv_path: Ruta al archivo CSV con datos de lluvia.
+        fecha: Fecha a filtrar (cualquier formato parseable por pandas).
+        output_html: Nombre del archivo HTML resultante.
     """
+    # 1️⃣ Lectura robusta del CSV
     df = _read_csv_robust(csv_path)
-    # Detectar la columna de fechas y normalizar (solo fecha, sin hora)
+
+    # 2️⃣ Detección y normalización de la columna de fechas
     date_col = _detect_date_column(df)
-    df[date_col] = pd.to_datetime(df[date_col], errors='coerce').dt.normalize()
-    # Normalizar la fecha solicitada
+    df[date_col] = pd.to_datetime(df[date_col], errors="coerce").dt.normalize()
     target_date = pd.to_datetime(fecha).normalize()
-    # Filtrar los registros que coinciden exactamente en la fecha
     df_filtrado = df[df[date_col] == target_date]
     if df_filtrado.empty:
         raise ValueError(f"No hay datos para la fecha {fecha}")
-    # Convertir coordenadas a puntos geográficos
-    # Convertir coordenadas a puntos geográficos usando columnas existentes
-    df_filtrado["lon"] = pd.to_numeric(df_filtrado["Longitud_Decimal"], errors='coerce')
-    df_filtrado["lat"] = pd.to_numeric(df_filtrado["Latitud_Decimal"], errors='coerce')
-    # Eliminar filas donde lon o lat sean NaN para evitar errores al crear geometrías
+
+    # 3️⃣ Conversión de coordenadas (columnas esperadas: Longitud_Decimal, Latitud_Decimal)
+    df_filtrado["lon"] = pd.to_numeric(df_filtrado.get("Longitud_Decimal"), errors="coerce")
+    df_filtrado["lat"] = pd.to_numeric(df_filtrado.get("Latitud_Decimal"), errors="coerce")
+    # 4️⃣ Eliminar filas sin coordenadas válidas
     df_filtrado = df_filtrado.dropna(subset=["lon", "lat"]).reset_index(drop=True)
+
+    # 5️⃣ Eliminar puntos duplicados (evita problemas en Qhull)
+    df_filtrado = df_filtrado.drop_duplicates(subset=["lon", "lat"]).reset_index(drop=True)
+
+    # 6️⃣ Crear GeoDataFrame y asignar CRS explícitamente
     gdf = gpd.GeoDataFrame(
         df_filtrado,
         geometry=gpd.points_from_xy(df_filtrado["lon"], df_filtrado["lat"]),
     )
-    # Establecer CRS explícitamente (EPSG:4326)
-    gdf.set_crs(epsg=4326, inplace=True)
-    # Crear polígonos Thiessen (Voronoi) en proyección plana
+    gdf.set_crs(epsg=4326, inplace=True)  # CRS obligatorio antes de cualquier transformación
+
+    # 7️⃣ Proyección plana para Voronoi
     gdf = gdf.to_crs(epsg=3857)
-    points = gdf.geometry.unary_union
-    # Robust Voronoi creation with handling for degenerate cases
-    from scipy.spatial import Voronoi, QhullError
-    import numpy as np
-    from shapely.geometry import Point, MultiPoint
-    # Extraer coordenadas y filtrar valores no finitos
+
+    # 8️⃣ Preparar coordenadas y filtrar valores no finitos
     raw_coords = np.array([(p.x, p.y) for p in gdf.geometry])
-    # Mantener solo filas donde ambas coordenadas son finitas
     valid_mask = np.isfinite(raw_coords).all(axis=1)
     coords = raw_coords[valid_mask]
-    # Eliminar puntos duplicados (pueden causar Qhull problemas)
+    # Eliminar duplicados que puedan haber quedado tras la proyección
     if len(coords) > 0:
         coords = np.unique(coords, axis=0)
-    # Si después del filtrado hay menos de 3 puntos, usar fallback
+
+    # 9️⃣ Construir polígonos Thiessen con manejo robusto de casos degenerados
     if len(coords) < 3:
+        # Fallback: buffer pequeño alrededor de cada punto
         polygons = [geom.buffer(1) for geom in gdf.geometry.iloc[valid_mask].reset_index(drop=True)]
     else:
         try:
             vor = Voronoi(coords)
         except QhullError:
-            # Falla de Qhull (puntos colineales, coincidencias, etc.)
-            # Utilizar el convex hull de todos los puntos como polígono único
-            hull = MultiPoint([geom for geom in gdf.geometry]).convex_hull
-            polygons = [hull] * len(gdf)
+            # Convex hull como polígono único cuando Qhull falla
+            hull = MultiPoint([geom for geom in gdf.geometry.iloc[valid_mask]]).convex_hull
+            polygons = [hull] * len(gdf.iloc[valid_mask])
         else:
-            # Construir polígonos a partir de los vértices del Voronoi
             polygons = []
             for region_idx in vor.point_region:
                 vertices = vor.regions[region_idx]
@@ -146,39 +126,49 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
                     continue
                 poly_coords = [vor.vertices[i] for i in vertices]
                 polygons.append(Polygon(poly_coords))
+
+    # 10️⃣ Asignar polígonos al GeoDataFrame
+    # Si se utilizó fallback, debemos asegurarnos de que el número de polígonos coincida con el número de puntos válidos
+    if len(polygons) != len(gdf.iloc[valid_mask]):
+        # rellenar con buffers mínimos para los puntos que faltan
+        needed = len(gdf.iloc[valid_mask]) - len(polygons)
+        polygons.extend([Point(p).buffer(1) for p in coords[-needed:]])
+    gdf = gdf.iloc[valid_mask].reset_index(drop=True)
     gdf["thiessen"] = polygons
     gdf = gdf.set_geometry("thiessen")
-    # Volver a EPSG:4326 para el HTML
+
+    # 11️⃣ Volver a CRS geográfico para exportar GeoJSON
     gdf = gdf.to_crs(epsg=4326)
-    # Guardar HTML sencillo con Leaflet
-    html_template = """
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>Mapa Thiessen</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-</head>
-<body>
-<div id="map" style="width: 100%; height: 800px;"></div>
-<script>
-  var map = L.map('map').setView([0,0], 2);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
-  var geojson = %s;
-  L.geoJSON(geojson).addTo(map);
-</script>
-</body>
-</html>
-"""
-    # Convertir a GeoJSON
+
+    # 12️⃣ Exportar a HTML sencillo con Leaflet
     geojson_str = gdf.drop(columns=["geometry"]).to_json()
+    html_template = """
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset=\"utf-8\" />
+        <title>Mapa Thiessen</title>
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+        <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\" />
+        <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>
+    </head>
+    <body>
+        <div id=\"map\" style=\"width: 100%; height: 800px;\"></div>
+        <script>
+            var map = L.map('map').setView([0,0], 2);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+            var geojson = %s;
+            L.geoJSON(geojson).addTo(map);
+        </script>
+    </body>
+    </html>
+    """
     with open(output_html, "w", encoding="utf-8") as f:
         f.write(html_template % geojson_str)
+    logger.info(f"Mapa guardado en {output_html}")
 
 # ----------------------------------------------------------------------
 # UI de Streamlit
@@ -188,80 +178,37 @@ def run_streamlit():
     st.title("Mapa de Lluvia – Thiessen")
     st.write("🚀 La aplicación se ha iniciado correctamente.")
 
-    # Determinar CSV a usar (prefiere historial si existe)
+    # Selección del CSV (histórico tiene prioridad)
     csv_path = "histlluviadiaria.csv" if os.path.exists("histlluviadiaria.csv") else "lluviadiaria.csv"
     if not os.path.exists(csv_path):
         st.error(f"No se encontró ningún CSV de datos en el directorio ({csv_path}).")
         return
 
-    # Cargar fechas disponibles
-    df = _read_csv_robust(csv_path)
-    date_col = _detect_date_column(df)
-    df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
-    fechas = sorted(df[date_col].dropna().dt.strftime("%Y-%m-%d").unique())
-    if not fechas:
-        st.warning("No se encontraron fechas válidas en el CSV.")
+    # Lectura ligera para extraer las fechas disponibles
+    try:
+        df_dates = _read_csv_robust(csv_path)
+        date_col = _detect_date_column(df_dates)
+        fechas = pd.to_datetime(df_dates[date_col], errors="coerce").dt.normalize().dropna().unique()
+        fechas = sorted(fechas)
+    except Exception as e:
+        st.error(f"Error al cargar el CSV: {e}")
         return
 
-    fecha_seleccionada = st.selectbox(
-        "Selecciona la fecha del mapa (se mostrará el día seleccionado)",
-        options=fechas,
-        index=len(fechas) - 1,
-    )
+    # Selector de fecha
+    fecha_str = st.selectbox("Selecciona la fecha del mapa (se mostrará el día seleccionado)",
+                             options=[d.strftime("%Y-%m-%d") for d in fechas])
+    if not fecha_str:
+        st.warning("Debe seleccionar una fecha.")
+        return
 
-    # Helper para generar y mostrar el mapa
-    def _generar_y_mostrar():
-        try:
-            generar_mapa_con_thiessen(csv_path=csv_path, fecha=fecha_seleccionada)
-            st.success("✅ Mapa generado con éxito.")
-        except Exception as e:
-            st.error(f"❗️ Error al generar el mapa: {e}")
-            return
+    # Generar y mostrar el mapa
+    try:
+        generar_mapa_con_thiessen(csv_path, fecha_str)
+        st.success("✅ Mapa generado con éxito.")
+        st.components.v1.html(open("mapa_lluvia.html", "r", encoding="utf-8").read(), height=820)
+    except Exception as e:
+        st.error(f"❗️ Error al generar el mapa: {e}")
+        logger.exception("Error al generar el mapa")
 
-        # Spinner y placeholder mientras esperamos el archivo
-        placeholder = st.empty()
-        with st.spinner("⏳ Generando mapa …"):
-            max_wait = 30  # segundos
-            waited = 0
-            while waited < max_wait:
-                if os.path.exists("mapa_lluvia.html"):
-                    break
-                placeholder.info("Esperando a que el archivo HTML se guarde …")
-                time.sleep(1)
-                waited += 1
-
-        if not os.path.exists("mapa_lluvia.html"):
-            st.error("⏰ El archivo del mapa no se creó a tiempo.")
-            return
-        try:
-            with open("mapa_lluvia.html", "r", encoding="utf-8") as f:
-                html_content = f.read()
-            st.components.v1.html(html_content, height=800, scrolling=True)
-        except Exception as e:
-            st.error(f"❗️ Error al cargar el mapa generado: {e}")
-
-    # Generar automáticamente con la fecha predeterminada
-    _generar_y_mostrar()
-
-    # Botón para volver a generar si el usuario cambia la fecha
-    if st.button("🔄 Ejecutar con fecha seleccionada"):
-        _generar_y_mostrar()
-
-# ----------------------------------------------------------------------
-# Entrada principal
-# ----------------------------------------------------------------------
 if __name__ == "__main__":
-    try:
-        run_streamlit()
-    except Exception as exc:
-        st.error("❗️ Se produjo un error inesperado en la aplicación.")
-        st.code(str(exc))
-
-def _read_csv_robust(path: str) -> pd.DataFrame:
-    """Lee un CSV intentando UTF‑8 y, si falla, vuelve a intentar con latin‑1.
-    Devuelve un DataFrame con todas las columnas como string.
-    """
-    try:
-        return pd.read_csv(path, dtype=str, encoding='utf-8')
-    except UnicodeDecodeError:
-        return pd.read_csv(path, dtype=str, encoding='latin-1')
+    run_streamlit()
