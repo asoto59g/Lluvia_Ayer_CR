@@ -87,7 +87,8 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
     - `output_html`: nombre del archivo HTML resultante.
     """
     df = _read_csv_robust(csv_path)
-    # Convertir la columna de fechas a datetime y normalizar (solo fecha, sin hora)
+    # Detectar la columna de fechas y normalizar (solo fecha, sin hora)
+    date_col = _detect_date_column(df)
     df[date_col] = pd.to_datetime(df[date_col], errors='coerce').dt.normalize()
     # Normalizar la fecha solicitada
     target_date = pd.to_datetime(fecha).normalize()
