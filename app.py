@@ -98,8 +98,10 @@ def obtener_limite_costa_rica(geojson_path: str = ARCHIVO_RECORTE_GEOJSON) -> gp
 def detectar_columna_fecha(df: pd.DataFrame) -> str:
     """
     Detecta automáticamente la columna que contiene la fecha,
-    dando prioridad al campo 'fecha_datos'.
+    dando prioridad al campo 'fecha_lectura' y luego a 'fecha_datos'.
     """
+    if "fecha_lectura" in df.columns:
+        return "fecha_lectura"
     if "fecha_datos" in df.columns:
         return "fecha_datos"
 
@@ -239,9 +241,10 @@ def generar_mapa_con_thiessen(
     if df_filtrado.empty:
         raise ValueError(f"No hay datos para la fecha {fecha}.")
 
-    # Restar 1 día a la fecha_datos para mostrar el día correspondiente a la medición
-    if "fecha_datos" in df_filtrado.columns and not df_filtrado["fecha_datos"].dropna().empty:
-        fecha_dt = pd.to_datetime(df_filtrado["fecha_datos"].dropna().iloc[0], errors="coerce")
+    # Restar 1 día a la fecha (usando fecha_lectura o fecha_datos) para la visualización del título
+    col_fecha_ref = "fecha_lectura" if "fecha_lectura" in df_filtrado.columns else ("fecha_datos" if "fecha_datos" in df_filtrado.columns else columna_fecha)
+    if col_fecha_ref in df_filtrado.columns and not df_filtrado[col_fecha_ref].dropna().empty:
+        fecha_dt = pd.to_datetime(df_filtrado[col_fecha_ref].dropna().iloc[0], errors="coerce")
         if not pd.isna(fecha_dt):
             fecha_datos_str = (fecha_dt - pd.Timedelta(days=1)).strftime("%Y-%m-%d")
         else:
