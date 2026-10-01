@@ -705,7 +705,7 @@ if (capaVoronoi.getBounds().isValid()) {
 
 
 # ============================================================
-# INTERFAZ STREAMLIT CON CALENDARIO
+# INTERFAZ STREAMLIT CON CALENDARIO COMPACTO (-25% TAMAÑO)
 # ============================================================
 
 def run_streamlit():
@@ -715,6 +715,24 @@ def run_streamlit():
         page_icon="🌧️",
         layout="wide"
     )
+
+    # Inyección de CSS para escalar y reducir un 25% el tamaño de la interfaz de selección
+    st.markdown("""
+        <style>
+        .compact-cal {
+            transform: scale(0.75);
+            transform-origin: top left;
+            width: 133.33%; /* Compensar el ancho tras escalar */
+            margin-bottom: -50px;
+        }
+        .stButton button {
+            padding: 2px 6px !important;
+            font-size: 11px !important;
+            min-height: 28px !important;
+            margin: 1px 0px !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
 
     st.title("🌧️ Mapa de Lluvia - Polígonos Thiessen (Costa Rica)")
     st.caption("Intersección exacta recortada con archivo local cri.geojson")
@@ -756,47 +774,58 @@ def run_streamlit():
         st.error("No se encontraron fechas válidas.")
         return
 
-    # ----------------------------------------------------
-    # CONFIGURACIÓN DEL CALENDARIO Y SELECTORES SUPERIORES
-    # ----------------------------------------------------
-    st.subheader("📅 Selección de Fecha")
+    # Inicialización de variables de estado
+    if "fecha_seleccionada" not in st.session_state:
+        st.session_state["fecha_seleccionada"] = fechas_list[-1].strftime("%Y-%m-%d")
 
-    # Extraer años y meses disponibles en los datos
+    fecha_actual_dt = pd.to_datetime(st.session_state["fecha_seleccionada"])
+
+    if "anio_sel" not in st.session_state:
+        st.session_state["anio_sel"] = fecha_actual_dt.year
+    if "mes_sel" not in st.session_state:
+        st.session_state["mes_sel"] = fecha_actual_dt.month
+
+    # ----------------------------------------------------
+    # CONTENEDOR COMPACTO DE SELECCIÓN (-25%)
+    # ----------------------------------------------------
+    st.markdown('<div class="compact-cal">', unsafe_allow_html=True)
+    
+    st.markdown("### 📅 Selección de Fecha")
+
+    # 1. Selector de Año
     anios_disponibles = sorted(list(set(f.year for f in fechas_list)), reverse=True)
-    
-    col_anio, col_mes = st.columns(2)
-    
-    with col_anio:
-        anio_sel = st.selectbox("Año:", anios_disponibles)
+    cols_anio = st.columns(len(anios_disponibles) + 4)
+    cols_anio[0].write("**Año:**")
+    for idx, a in enumerate(anios_disponibles):
+        btn_type = "primary" if a == st.session_state["anio_sel"] else "secondary"
+        if cols_anio[idx + 1].button(str(a), key=f"btn_a_{a}", type=btn_type):
+            st.session_state["anio_sel"] = a
+            st.rerun()
 
-    meses_nombres = {
-        1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
-        7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
+    # 2. Selector de Meses
+    meses_nombres_cortos = {
+        1: "Ene", 2: "Feb", 3: "Mar", 4: "Abr", 5: "May", 6: "Jun",
+        7: "Jul", 8: "Ago", 9: "Sep", 10: "Oct", 11: "Nov", 12: "Dic"
     }
 
-    # Filtrar meses que correspondan al año seleccionado
-    meses_disponibles = sorted(list(set(f.month for f in fechas_list if f.year == anio_sel)))
-    
-    with col_mes:
-        mes_sel = st.selectbox(
-            "Mes:",
-            options=meses_disponibles,
-            format_func=lambda m: meses_nombres[m]
-        )
+    cols_meses = st.columns(13)
+    cols_meses[0].write("**Mes:**")
+    for m in range(1, 13):
+        # Verificar si el mes tiene datos en el año seleccionado
+        tiene_datos_mes = any(f.year == st.session_state["anio_sel"] and f.month == m for f in fechas_list)
+        btn_type = "primary" if m == st.session_state["mes_sel"] else "secondary"
+        
+        if cols_meses[m].button(meses_nombres_cortos[m], key=f"btn_m_{m}", type=btn_type, disabled=not tiene_datos_mes):
+            st.session_state["mes_sel"] = m
+            st.rerun()
 
-    # Renderizar Rejilla del Calendario
-    st.markdown("#### Seleccione un día resaltado (🟢 Con datos)")
-    
+    # 3. Calendario Mensual
     dias_semana = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
     cols_dias = st.columns(7)
     for idx, dia_nom in enumerate(dias_semana):
-        cols_dias[idx].markdown(f"**{dia_nom}**")
+        cols_dias[idx].caption(f"**{dia_nom}**")
 
-    cal = calendar.monthcalendar(anio_sel, mes_sel)
-
-    # Variable de estado en la sesión para guardar la fecha seleccionada
-    if "fecha_seleccionada" not in st.session_state:
-        st.session_state["fecha_seleccionada"] = fechas_list[-1].strftime("%Y-%m-%d")
+    cal = calendar.monthcalendar(st.session_state["anio_sel"], st.session_state["mes_sel"])
 
     for semana in cal:
         cols = st.columns(7)
@@ -804,21 +833,27 @@ def run_streamlit():
             if dia == 0:
                 cols[idx].write("")
             else:
-                fecha_curr_str = f"{anio_sel:04d}-{mes_sel:02d}-{dia:02d}"
+                fecha_curr_str = f"{st.session_state['anio_sel']:04d}-{st.session_state['mes_sel']:02d}-{dia:02d}"
                 tiene_datos = fecha_curr_str in fechas_unicas_str
+                es_seleccionada = fecha_curr_str == st.session_state["fecha_seleccionada"]
                 
-                # Resaltar botón si posee datos
                 if tiene_datos:
-                    btn_label = f"🟢 {dia}"
-                    if cols[idx].button(btn_label, key=f"btn_{fecha_curr_str}", type="primary"):
+                    label = f"🟢 {dia}" if not es_seleccionada else f"⭐ {dia}"
+                    btn_t = "primary" if es_seleccionada else "secondary"
+                    if cols[idx].button(label, key=f"btn_d_{fecha_curr_str}", type=btn_t):
                         st.session_state["fecha_seleccionada"] = fecha_curr_str
+                        st.rerun()
                 else:
-                    cols[idx].button(f"{dia}", key=f"btn_{fecha_curr_str}", disabled=True)
+                    cols[idx].button(f"{dia}", key=f"btn_d_{fecha_curr_str}", disabled=True)
 
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # ----------------------------------------------------
+    # DESPLIEGUE DEL MAPA
+    # ----------------------------------------------------
     fecha_act = st.session_state["fecha_seleccionada"]
     st.info(f"📆 **Fecha activa seleccionada para generar mapa:** `{fecha_act}`")
 
-    # Botón para generar el mapa
     if st.button("🗺️ Generar / Actualizar mapa", type="primary", use_container_width=True):
         with st.spinner("Procesando geometrías y recortando con cri.geojson..."):
             try:
