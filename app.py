@@ -43,10 +43,6 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-# RUTA ANTERIOR:
-# ARCHIVO_RECORTE_GEOJSON = "cri.geojson"
-
-# RUTA ABSOLUTA SEGURA:
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ARCHIVO_RECORTE_GEOJSON = os.path.join(BASE_DIR, "cri.geojson")
 
@@ -270,7 +266,6 @@ def generar_mapa_con_thiessen(
 
     df_filtrado = df_filtrado.drop_duplicates(subset=["lon", "lat"]).reset_index(drop=True)
 
-    # Cantidad total de estaciones válidas procesadas
     num_estaciones_validas = len(df_filtrado)
 
     # 1. GeoDataFrame de puntos en WGS84
@@ -372,7 +367,7 @@ html, body {
     color: #000000;
 }
 
-/* Estilo para las etiquetas flotantes de lluvia (sin fondo) */
+/* Estilo para las etiquetas flotantes de lluvia */
 .label-lluvia-container {
     background: transparent;
     border: none;
@@ -420,6 +415,20 @@ html, body {
     border: 1px solid #444;
     margin-right: 8px;
     box-sizing: border-box;
+}
+
+/* Personalizar ícono de despegue de la caja de capas con << */
+.leaflet-control-layers-toggle {
+    background-image: None !important;
+    text-align: center;
+    line-height: 36px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #0056b3;
+    text-decoration: none;
+}
+.leaflet-control-layers-toggle::after {
+    content: "««";
 }
 </style>
 </head>
@@ -473,7 +482,6 @@ titleControl.addTo(map);
 var geojsonVoronoiData = __GEOJSON_VORONOI__;
 var geojsonPuntosData = __GEOJSON_PUNTOS__;
 
-// Mapeo exacto de rangos a colores hexadecimales tomados de la imagen
 function obtenerColorLluvia(valorNum) {
     if (valorNum === null || valorNum === undefined || isNaN(valorNum)) return '#cccccc';
     if (valorNum === 0) return '#e3d2bf';
@@ -517,7 +525,7 @@ function extraerNumLluvia(properties) {
 }
 
 /* =========================================================
-   3. CAPA VORONOI / THIESSEN (RECORTADA Y COLOREADA POR RANGOS)
+   3. CAPA VORONOI / THIESSEN
    ========================================================= */
 var capaVoronoi = L.geoJSON(geojsonVoronoiData, {
     style: function(feature) {
@@ -556,7 +564,7 @@ var capaVoronoi = L.geoJSON(geojsonVoronoiData, {
 }).addTo(map);
 
 /* =========================================================
-   4. FUNCIÓN AUXILIAR PARA OBTENER VALOR DE TEXTO EN MM
+   4. FUNCIÓN AUXILIAR PARA OBTENER VALOR EN MM
    ========================================================= */
 function obtenerValorLluvia(properties) {
     var val = extraerNumLluvia(properties);
@@ -625,7 +633,7 @@ map.on('zoomend', actualizarEtiquetasZoom);
 actualizarEtiquetasZoom();
 
 /* =========================================================
-   7. LEYENDA / SIMBOLOGÍA FIJA EN LA ESQUINA INFERIOR DERECHA
+   7. LEYENDA / SIMBOLOGÍA FIJA
    ========================================================= */
 var legendControl = L.control({ position: 'bottomright' });
 
@@ -662,7 +670,7 @@ legendControl.onAdd = function(map) {
 legendControl.addTo(map);
 
 /* =========================================================
-   8. CONTROL DE CAPAS Y ENCUADRE
+   8. CONTROL DE CAPAS CONTRAÍDO POR DEFECTO (collapsed: true)
    ========================================================= */
 var baseMaps = {
     "OSM Estándar": osmStandard,
@@ -675,7 +683,8 @@ var overlayMaps = {
     "Etiquetas de Lluvia (mm)": grupoEtiquetas
 };
 
-L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+// Se pasa collapsed: true para que aparezca minimizado con el botón <<
+L.control.layers(baseMaps, overlayMaps, { collapsed: true }).addTo(map);
 
 if (capaVoronoi.getBounds().isValid()) {
     map.fitBounds(capaVoronoi.getBounds(), { padding: [20, 20] });
