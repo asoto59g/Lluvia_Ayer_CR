@@ -100,6 +100,8 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
     # Convertir coordenadas a puntos geográficos usando columnas existentes
     df_filtrado["lon"] = pd.to_numeric(df_filtrado["Longitud_Decimal"], errors='coerce')
     df_filtrado["lat"] = pd.to_numeric(df_filtrado["Latitud_Decimal"], errors='coerce')
+    # Eliminar filas donde lon o lat sean NaN para evitar errores al crear geometrías
+    df_filtrado = df_filtrado.dropna(subset=["lon", "lat"]).reset_index(drop=True)
     gdf = gpd.GeoDataFrame(
         df_filtrado,
         geometry=gpd.points_from_xy(df_filtrado["lon"], df_filtrado["lat"]),
