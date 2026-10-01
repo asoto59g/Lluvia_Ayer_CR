@@ -98,7 +98,7 @@ def obtener_limite_costa_rica(geojson_path: str = ARCHIVO_RECORTE_GEOJSON) -> gp
 def detectar_columna_fecha(df: pd.DataFrame) -> str:
     """
     Detecta automáticamente la columna que contiene la fecha,
-    dando prioridad al campo 'fecha_lectura' y luego a 'fecha_datos'.
+    dando máxima prioridad al campo 'fecha_lectura' y luego a 'fecha_datos'.
     """
     if "fecha_lectura" in df.columns:
         return "fecha_lectura"
@@ -114,7 +114,7 @@ def detectar_columna_fecha(df: pd.DataFrame) -> str:
         if valores.empty:
             continue
         try:
-            pd.to_datetime(valores.iloc[0], errors="raise")
+            pd.to_datetime(valores.iloc[0], errors="raise", format="mixed")
             return columna
         except Exception:
             continue
@@ -230,8 +230,9 @@ def generar_mapa_con_thiessen(
 
     columna_fecha = detectar_columna_fecha(df)
 
-    df_temp_fecha = pd.to_datetime(df[columna_fecha], errors="coerce").dt.normalize()
-    fecha_objetivo = pd.to_datetime(fecha, errors="coerce").normalize()
+    # Conversión flexible multiformato (mixed)
+    df_temp_fecha = pd.to_datetime(df[columna_fecha], errors="coerce", format="mixed").dt.normalize()
+    fecha_objetivo = pd.to_datetime(fecha, errors="coerce", format="mixed").normalize()
 
     if pd.isna(fecha_objetivo):
         raise ValueError(f"Fecha inválida: {fecha}")
@@ -241,10 +242,10 @@ def generar_mapa_con_thiessen(
     if df_filtrado.empty:
         raise ValueError(f"No hay datos para la fecha {fecha}.")
 
-    # Restar 1 día a la fecha (usando fecha_lectura o fecha_datos) para la visualización del título
+    # Restar 1 día a la fecha_lectura/fecha_datos para mostrar el día correspondiente en el título
     col_fecha_ref = "fecha_lectura" if "fecha_lectura" in df_filtrado.columns else ("fecha_datos" if "fecha_datos" in df_filtrado.columns else columna_fecha)
     if col_fecha_ref in df_filtrado.columns and not df_filtrado[col_fecha_ref].dropna().empty:
-        fecha_dt = pd.to_datetime(df_filtrado[col_fecha_ref].dropna().iloc[0], errors="coerce")
+        fecha_dt = pd.to_datetime(df_filtrado[col_fecha_ref].dropna().iloc[0], errors="coerce", format="mixed")
         if not pd.isna(fecha_dt):
             fecha_datos_str = (fecha_dt - pd.Timedelta(days=1)).strftime("%Y-%m-%d")
         else:
@@ -748,7 +749,7 @@ def run_streamlit():
     st.caption("Intersección exacta recortada con archivo local cri.geojson")
 
     if not os.path.exists(ARCHIVO_RECORTE_GEOJSON):
-        st.error(f"⚠️ No se encontró el archivo de recorte local `{ARCHIVO_RECORTE_GEOJSON}` en la carpeta de ejecución.")
+        st.error(f"⚠️️ No se encontró el archivo de recorte local `{ARCHIVO_RECORTE_GEOJSON}` en la carpeta de ejecución.")
         return
 
     if os.path.exists("histlluviadiaria.csv"):
@@ -767,8 +768,9 @@ def run_streamlit():
         df_dates = leer_csv_robusto(csv_path)
         columna_fecha = detectar_columna_fecha(df_dates)
 
+        # Conversión flexible para soportar múltiples formatos de fecha en la misma columna
         fechas = (
-            pd.to_datetime(df_dates[columna_fecha], errors="coerce")
+            pd.to_datetime(df_dates[columna_fecha], errors="coerce", format="mixed")
             .dt.normalize()
             .dropna()
             .unique()
