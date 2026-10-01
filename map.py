@@ -159,7 +159,7 @@ def run_streamlit():
         return
 
     # Cargar fechas disponibles
-    df = pd.read_csv(csv_path, dtype=str)
+    df = _read_csv_robust(csv_path)
     date_col = _detect_date_column(df)
     df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
     fechas = sorted(df[date_col].dropna().dt.strftime("%Y-%m-%d").unique())
