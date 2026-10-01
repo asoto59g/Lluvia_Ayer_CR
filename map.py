@@ -138,6 +138,7 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
     gdf = gdf.iloc[valid_mask].reset_index(drop=True)
     gdf["thiessen"] = polygons
     gdf = gdf.set_geometry("thiessen")
+    gdf.set_crs(epsg=3857, inplace=True)  # Re‑assert CRS before re‑projecting
 
     # 11️⃣ Volver a CRS geográfico para exportar GeoJSON
     gdf = gdf.to_crs(epsg=4326)
