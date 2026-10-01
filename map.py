@@ -16,7 +16,7 @@ import os
 import logging
 from datetime import datetime
 import pandas as pd
-import geopandas as gpd
+import numpy as np
 from shapely.geometry import Polygon, Point, MultiPoint
 import streamlit as st
 
