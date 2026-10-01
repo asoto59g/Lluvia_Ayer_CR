@@ -87,11 +87,11 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
     - `output_html`: nombre del archivo HTML resultante.
     """
     df = _read_csv_robust(csv_path)
-    # Detectar la columna de fechas y convertirla a datetime
-    date_col = _detect_date_column(df)
-    df[date_col] = pd.to_datetime(df[date_col], errors='coerce')
-    # Filtrar por la fecha solicitada (se muestra el día anterior)
-    target_date = pd.to_datetime(fecha)
+    # Convertir la columna de fechas a datetime y normalizar (solo fecha, sin hora)
+    df[date_col] = pd.to_datetime(df[date_col], errors='coerce').dt.normalize()
+    # Normalizar la fecha solicitada
+    target_date = pd.to_datetime(fecha).normalize()
+    # Filtrar los registros que coinciden exactamente en la fecha
     df_filtrado = df[df[date_col] == target_date]
     if df_filtrado.empty:
         raise ValueError(f"No hay datos para la fecha {fecha}")
