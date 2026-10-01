@@ -1,3 +1,6 @@
+<img width="1365" height="601" alt="preview" src="https://github.com/user-attachments/assets/f15c5c3d-c530-46fa-bf17-39bc9cb876cb" />
+
+
 # Lluvia Ayer CR
 
 Este repositorio contiene dos scripts principales que permiten **obtener, procesar y visualizar** los datos de precipitación diaria de 138 estaciones meteorológicas de Costa Rica.
