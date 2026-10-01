@@ -105,6 +105,9 @@ def generar_mapa_con_thiessen(csv_path: str, fecha: str, output_html: str = "map
         geometry=gpd.points_from_xy(df_filtrado["lon"], df_filtrado["lat"]),
         crs="EPSG:4326",
     )
+    # Garantizar que el CRS esté definido (para versiones donde el argumento crs pueda omitirse)
+    if gdf.crs is None:
+        gdf.set_crs(epsg=4326, inplace=True)
     # Crear polígonos Thiessen (Voronoi) en proyección plana
     gdf = gdf.to_crs(epsg=3857)
     points = gdf.geometry.unary_union
