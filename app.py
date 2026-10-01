@@ -21,6 +21,8 @@ Archivos esperados en la misma carpeta:
 
 import os
 import logging
+import calendar
+from datetime import datetime
 
 import pandas as pd
 import numpy as np
@@ -335,7 +337,6 @@ html, body {
     height: 800px;
 }
 
-/* Barra de desplazamiento táctil más ancha para teléfonos inteligentes */
 ::-webkit-scrollbar {
     width: 14px;
     height: 14px;
@@ -390,7 +391,6 @@ html, body {
     color: #000000;
 }
 
-/* Estilo para las etiquetas flotantes de lluvia */
 .label-lluvia-container {
     background: transparent;
     border: none;
@@ -409,7 +409,6 @@ html, body {
     transition: font-size 0.2s ease;
 }
 
-/* Estilo para la caja de la leyenda / simbología */
 .legend-box {
     background: rgba(255, 255, 255, 0.95);
     padding: 10px 12px;
@@ -440,7 +439,6 @@ html, body {
     box-sizing: border-box;
 }
 
-/* Personalizar ícono de despegue de la caja de capas con << */
 .leaflet-control-layers-toggle {
     background-image: None !important;
     text-align: center;
@@ -460,9 +458,6 @@ html, body {
 <div id="map"></div>
 
 <script>
-/* =========================================================
-   1. MAPAS BASE (OSM + SATÉLITE ESRI)
-   ========================================================= */
 var osmStandard = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; OpenStreetMap contributors'
@@ -479,9 +474,6 @@ var map = L.map('map', {
     layers: [osmStandard]
 });
 
-/* =========================================================
-   TÍTULO FLOTANTE EN ESQUINA SUPERIOR IZQUIERDA
-   ========================================================= */
 var titleControl = L.control({ position: 'topleft' });
 
 titleControl.onAdd = function(map) {
@@ -499,9 +491,6 @@ titleControl.onAdd = function(map) {
 
 titleControl.addTo(map);
 
-/* =========================================================
-   2. DATOS GEOJSON Y ESCALA DE COLORES SEGÚN SIMBOLOGÍA
-   ========================================================= */
 var geojsonVoronoiData = __GEOJSON_VORONOI__;
 var geojsonPuntosData = __GEOJSON_PUNTOS__;
 
@@ -547,9 +536,6 @@ function extraerNumLluvia(properties) {
     return null;
 }
 
-/* =========================================================
-   3. CAPA VORONOI / THIESSEN
-   ========================================================= */
 var capaVoronoi = L.geoJSON(geojsonVoronoiData, {
     style: function(feature) {
         var valNum = extraerNumLluvia(feature.properties);
@@ -586,17 +572,11 @@ var capaVoronoi = L.geoJSON(geojsonVoronoiData, {
     }
 }).addTo(map);
 
-/* =========================================================
-   4. FUNCIÓN AUXILIAR PARA OBTENER VALOR EN MM
-   ========================================================= */
 function obtenerValorLluvia(properties) {
     var val = extraerNumLluvia(properties);
     return (val !== null) ? val.toFixed(1) + " mm" : "N/A";
 }
 
-/* =========================================================
-   5. CAPA ESTACIONES / PUNTOS CON ETIQUETAS
-   ========================================================= */
 var capaPuntos = L.geoJSON(geojsonPuntosData, {
     pointToLayer: function(feature, latlng) {
         return L.circleMarker(latlng, {
@@ -623,9 +603,6 @@ var capaPuntos = L.geoJSON(geojsonPuntosData, {
     }
 }).addTo(map);
 
-/* =========================================================
-   6. GRUPO DE ETIQUETAS Y ESCALADO SEGÚN ZOOM
-   ========================================================= */
 var grupoEtiquetas = L.layerGroup().addTo(map);
 
 function actualizarEtiquetasZoom() {
@@ -655,9 +632,6 @@ function actualizarEtiquetasZoom() {
 map.on('zoomend', actualizarEtiquetasZoom);
 actualizarEtiquetasZoom();
 
-/* =========================================================
-   7. LEYENDA / SIMBOLOGÍA FIJA
-   ========================================================= */
 var legendControl = L.control({ position: 'bottomright' });
 
 legendControl.onAdd = function(map) {
@@ -692,9 +666,6 @@ legendControl.onAdd = function(map) {
 
 legendControl.addTo(map);
 
-/* =========================================================
-   8. CONTROL DE CAPAS CONTRAÍDO POR DEFECTO (collapsed: true)
-   ========================================================= */
 var baseMaps = {
     "OSM Estándar": osmStandard,
     "Satélite (Esri World Imagery)": esriSatellite
@@ -734,7 +705,7 @@ if (capaVoronoi.getBounds().isValid()) {
 
 
 # ============================================================
-# INTERFAZ STREAMLIT
+# INTERFAZ STREAMLIT CON CALENDARIO
 # ============================================================
 
 def run_streamlit():
@@ -749,7 +720,7 @@ def run_streamlit():
     st.caption("Intersección exacta recortada con archivo local cri.geojson")
 
     if not os.path.exists(ARCHIVO_RECORTE_GEOJSON):
-        st.error(f"⚠️️ No se encontró el archivo de recorte local `{ARCHIVO_RECORTE_GEOJSON}` en la carpeta de ejecución.")
+        st.error(f"⚠️ No se encontró el archivo de recorte local `{ARCHIVO_RECORTE_GEOJSON}` en la carpeta de ejecución.")
         return
 
     if os.path.exists("histlluviadiaria.csv"):
@@ -762,43 +733,98 @@ def run_streamlit():
         st.code("histlluviadiaria.csv\nlluviadiaria.csv")
         return
 
-    st.info(f"📄 Archivo CSV de lluvia: `{csv_path}` | 🗺 Capa de recorte: `{ARCHIVO_RECORTE_GEOJSON}`")
-
     try:
         df_dates = leer_csv_robusto(csv_path)
         columna_fecha = detectar_columna_fecha(df_dates)
 
-        # Conversión flexible para soportar múltiples formatos de fecha en la misma columna
-        fechas = (
+        # Extraer fechas únicas y normalizarlas
+        fechas_dt = (
             pd.to_datetime(df_dates[columna_fecha], errors="coerce", format="mixed")
             .dt.normalize()
             .dropna()
             .unique()
         )
-        fechas = sorted(fechas)
+        fechas_unicas_str = set(f.strftime("%Y-%m-%d") for f in fechas_dt)
+        fechas_list = sorted(list(fechas_dt))
 
     except Exception as error:
         st.error("Error al leer las fechas del CSV.")
         st.exception(error)
         return
 
-    if not fechas:
+    if not fechas_list:
         st.error("No se encontraron fechas válidas.")
         return
 
-    opciones_fecha = [fecha.strftime("%Y-%m-%d") for fecha in fechas]
+    # ----------------------------------------------------
+    # CONFIGURACIÓN DEL CALENDARIO Y SELECTORES SUPERIORES
+    # ----------------------------------------------------
+    st.subheader("📅 Selección de Fecha")
 
-    fecha_str = st.selectbox(
-        "📅 Selecciona la fecha:",
-        opciones_fecha
-    )
+    # Extraer años y meses disponibles en los datos
+    anios_disponibles = sorted(list(set(f.year for f in fechas_list)), reverse=True)
+    
+    col_anio, col_mes = st.columns(2)
+    
+    with col_anio:
+        anio_sel = st.selectbox("Año:", anios_disponibles)
 
-    if st.button("🗺️ Generar mapa", type="primary"):
+    meses_nombres = {
+        1: "Enero", 2: "Febrero", 3: "Marzo", 4: "Abril", 5: "Mayo", 6: "Junio",
+        7: "Julio", 8: "Agosto", 9: "Septiembre", 10: "Octubre", 11: "Noviembre", 12: "Diciembre"
+    }
+
+    # Filtrar meses que correspondan al año seleccionado
+    meses_disponibles = sorted(list(set(f.month for f in fechas_list if f.year == anio_sel)))
+    
+    with col_mes:
+        mes_sel = st.selectbox(
+            "Mes:",
+            options=meses_disponibles,
+            format_func=lambda m: meses_nombres[m]
+        )
+
+    # Renderizar Rejilla del Calendario
+    st.markdown("#### Seleccione un día resaltado (🟢 Con datos)")
+    
+    dias_semana = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"]
+    cols_dias = st.columns(7)
+    for idx, dia_nom in enumerate(dias_semana):
+        cols_dias[idx].markdown(f"**{dia_nom}**")
+
+    cal = calendar.monthcalendar(anio_sel, mes_sel)
+
+    # Variable de estado en la sesión para guardar la fecha seleccionada
+    if "fecha_seleccionada" not in st.session_state:
+        st.session_state["fecha_seleccionada"] = fechas_list[-1].strftime("%Y-%m-%d")
+
+    for semana in cal:
+        cols = st.columns(7)
+        for idx, dia in enumerate(semana):
+            if dia == 0:
+                cols[idx].write("")
+            else:
+                fecha_curr_str = f"{anio_sel:04d}-{mes_sel:02d}-{dia:02d}"
+                tiene_datos = fecha_curr_str in fechas_unicas_str
+                
+                # Resaltar botón si posee datos
+                if tiene_datos:
+                    btn_label = f"🟢 {dia}"
+                    if cols[idx].button(btn_label, key=f"btn_{fecha_curr_str}", type="primary"):
+                        st.session_state["fecha_seleccionada"] = fecha_curr_str
+                else:
+                    cols[idx].button(f"{dia}", key=f"btn_{fecha_curr_str}", disabled=True)
+
+    fecha_act = st.session_state["fecha_seleccionada"]
+    st.info(f"📆 **Fecha activa seleccionada para generar mapa:** `{fecha_act}`")
+
+    # Botón para generar el mapa
+    if st.button("🗺️ Generar / Actualizar mapa", type="primary", use_container_width=True):
         with st.spinner("Procesando geometrías y recortando con cri.geojson..."):
             try:
                 output_file = generar_mapa_con_thiessen(
                     csv_path=csv_path,
-                    fecha=fecha_str,
+                    fecha=fecha_act,
                     geojson_path=ARCHIVO_RECORTE_GEOJSON,
                     output_html="mapa_lluvia.html"
                 )
