@@ -6,3 +6,4 @@ matplotlib>=3.9
 playwright>=1.44
 pytesseract>=0.3
 requests>=2.32
+scipy>=1.14.0
