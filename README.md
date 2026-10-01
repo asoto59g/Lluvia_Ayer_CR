@@ -3,6 +3,10 @@
 
 # Lluvia Ayer CR
 
+Link para generar mapas de lluvia diaria: https://lluviaayercr-bamei6jypmye7uhfsrlpzq.streamlit.app/
+
+Datos desde 26set2026
+
 Este repositorio contiene dos scripts principales que permiten **obtener, procesar y visualizar** los datos de precipitación diaria de 138 estaciones meteorológicas de Costa Rica.
 
 ## Scripts
