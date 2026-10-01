@@ -18,9 +18,9 @@ Este repositorio contiene dos scripts principales que permiten **obtener, proces
 - `histlluviadiaria.csv` (histórico acumulado) | ```powershell
 python scraper_v3.py
 ``` |
-| `map.py` | **Generador de mapa** que carga el histórico (o el diario) y construye polígonos de Thiessen (Voronoi) para cada estación, coloreándolos según la cantidad de lluvia. Produce una visualización estática embebida como *data‑uri* que puede mostrarse en Streamlit o abrirse directamente en el navegador. | ```powershell
-python map.py --fecha 2026-09-27   # muestra la fecha especificada
-python map.py                     # usa la fecha más reciente disponible
+| `app.py` | **Generador de mapa** que carga el histórico (o el diario) y construye polígonos de Thiessen (Voronoi) para cada estación, coloreándolos según la cantidad de lluvia. Produce una visualización estática embebida como *data‑uri* que puede mostrarse en Streamlit o abrirse directamente en el navegador. | ```powershell
+python app.py --fecha 2026-09-27   # muestra la fecha especificada
+python app.py                     # usa la fecha más reciente disponible
 ``` |
 
 ## Dependencias
@@ -35,12 +35,12 @@ python -m playwright install chromium  # necesario para el scraper
 ## Flujo de trabajo recomendado
 
 1. **Ejecutar el scraper** (idealmente a través de un cron/GitHub Action) para generar `lluviadiaria.csv` y actualizar el histórico.
-2. **Ejecutar `map.py`** con la fecha deseada para producir el mapa de precipitación.
+2. **Ejecutar `app.py`** con la fecha deseada para producir el mapa de precipitación.
 3. (Opcional) **Desplegar con Streamlit** para una UI interactiva que permita seleccionar la fecha mediante un *selectbox*.
 
 ## Notas técnicas
 - El scraper usa **Playwright** (headless Chromium) y OCR con **Tesseract**. Se implementó una estrategia de *fallback* que captura la página completa cuando las regiones de interés (ROI) específicas fallan.
-- `map.py` ahora normaliza automáticamente las fechas del CSV a formato ISO (`YYYY‑MM‑DD`) y maneja diferentes codificaciones (`utf‑8‑sig` y `latin1`).
+- `app.py` ahora normaliza automáticamente las fechas del CSV a formato ISO (`YYYY‑MM‑DD`) y maneja diferentes codificaciones (`utf‑8‑sig` y `latin1`).
 - Se añadió un mecanismo de registro (`logging`) para facilitar la depuración.
 
 ---
