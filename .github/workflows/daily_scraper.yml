@@ -41,24 +41,17 @@ jobs:
         run: |
           python scraper_v3.py
 
-      # Asegurar permisos de escritura para el BOT
-    permissions:
-      contents: write
-
-    steps:
-    # ... (tus pasos anteriores de checkout, python y ejecucion del script) ...
-
-    - name: Guardar y subir cambios
-      run: |
-        git config --local user.email "github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git add lluviadiaria.csv histlluviadiaria.csv
-        
-        # Confirmar si hay cambios
-        if ! git diff --staged --quiet; then
-          git commit -m "Cron: Actualización de lluvia IMN [$(date -u +'%Y-%m-%d')]"
-          git pull --rebase origin main
-          git push origin main
-        else
-          echo "No hay cambios nuevos para confirmar"
-        fi
+      - name: Guardar y subir cambios
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add lluviadiaria.csv histlluviadiaria.csv
+          
+          # Confirmar si hay cambios
+          if ! git diff --staged --quiet; then
+            git commit -m "Cron: Actualización de lluvia IMN [$(date -u +'%Y-%m-%d')]"
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "No hay cambios nuevos para confirmar"
+          fi
