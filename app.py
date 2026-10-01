@@ -43,8 +43,12 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-# Ruta local esperada para el archivo GeoJSON de recorte
-ARCHIVO_RECORTE_GEOJSON = "cri.geojson"
+# RUTA ANTERIOR:
+# ARCHIVO_RECORTE_GEOJSON = "cri.geojson"
+
+# RUTA ABSOLUTA SEGURA:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ARCHIVO_RECORTE_GEOJSON = os.path.join(BASE_DIR, "cri.geojson")
 
 
 # ============================================================
