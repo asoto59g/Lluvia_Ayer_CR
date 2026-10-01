@@ -705,7 +705,7 @@ if (capaVoronoi.getBounds().isValid()) {
 
 
 # ============================================================
-# INTERFAZ STREAMLIT CON CALENDARIO COMPACTO (-25% TAMAÑO)
+# INTERFAZ STREAMLIT CON CALENDARIO A ESCALA 0.25 (25% TAMAÑO)
 # ============================================================
 
 def run_streamlit():
@@ -716,20 +716,20 @@ def run_streamlit():
         layout="wide"
     )
 
-    # Inyección de CSS para escalar y reducir un 25% el tamaño de la interfaz de selección
+    # Inyección CSS con factor 0.25 para escalar exactamente al 25%
     st.markdown("""
         <style>
-        .compact-cal {
-            transform: scale(0.75);
+        .compact-cal-25 {
+            transform: scale(0.25);
             transform-origin: top left;
-            width: 133.33%; /* Compensar el ancho tras escalar */
-            margin-bottom: -50px;
+            width: 400%; /* Compensar ancho por reducción al 25% */
+            margin-bottom: -180px;
         }
         .stButton button {
-            padding: 2px 6px !important;
-            font-size: 11px !important;
-            min-height: 28px !important;
-            margin: 1px 0px !important;
+            padding: 1px 3px !important;
+            font-size: 9px !important;
+            min-height: 20px !important;
+            margin: 0px !important;
         }
         </style>
     """, unsafe_allow_html=True)
@@ -786,9 +786,9 @@ def run_streamlit():
         st.session_state["mes_sel"] = fecha_actual_dt.month
 
     # ----------------------------------------------------
-    # CONTENEDOR COMPACTO DE SELECCIÓN (-25%)
+    # CONTENEDOR DE SELECCIÓN REDUCIDO A FACTOR 0.25
     # ----------------------------------------------------
-    st.markdown('<div class="compact-cal">', unsafe_allow_html=True)
+    st.markdown('<div class="compact-cal-25">', unsafe_allow_html=True)
     
     st.markdown("### 📅 Selección de Fecha")
 
@@ -811,7 +811,6 @@ def run_streamlit():
     cols_meses = st.columns(13)
     cols_meses[0].write("**Mes:**")
     for m in range(1, 13):
-        # Verificar si el mes tiene datos en el año seleccionado
         tiene_datos_mes = any(f.year == st.session_state["anio_sel"] and f.month == m for f in fechas_list)
         btn_type = "primary" if m == st.session_state["mes_sel"] else "secondary"
         
