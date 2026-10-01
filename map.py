@@ -221,7 +221,6 @@ if __name__ == "__main__":
         st.error("❗️ Se produjo un error inesperado en la aplicación.")
         st.code(str(exc))
 
-
 def _read_csv_robust(path: str) -> pd.DataFrame:
     """Lee un CSV intentando UTF‑8 y, si falla, vuelve a intentar con latin‑1.
     Devuelve un DataFrame con todas las columnas como string.
