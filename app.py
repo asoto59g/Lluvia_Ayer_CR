@@ -336,17 +336,37 @@ html, body {
 }
 
 .map-title-box {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.92);
     padding: 10px 14px;
     border-radius: 6px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     font-family: Arial, sans-serif;
     line-height: 1.35;
+    position: relative;
+    min-width: 180px;
+}
+.map-title-box .toggle-title-btn {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: #0056b3;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.map-title-box .toggle-title-btn:hover {
+    background: #003d80;
 }
 .map-title-box .line-1 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     color: #000000;
+    margin-right: 25px;
 }
 .map-title-box .line-2 {
     font-size: 13px;
@@ -433,7 +453,7 @@ html, body {
     content: "««";
 }
 
-/* Estilo para el slider de opacidad integrado en el control de capas */
+/* Estilo para el slider de opacidad en el control de capas */
 .voronoi-opacity-container {
     margin-top: 4px;
     margin-left: 22px;
@@ -465,9 +485,10 @@ var esriSatellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/ser
     attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics'
 });
 
+// Inicialización centrada exactamente en Lat: 10.137222, Lon: -84.193333 con Zoom 9
 var map = L.map('map', {
-    center: [9.7489, -83.7534],
-    zoom: 8,
+    center: [10.137222, -84.193333],
+    zoom: 9,
     layers: [osmStandard]
 });
 
@@ -475,18 +496,35 @@ var titleControl = L.control({ position: 'topleft' });
 
 titleControl.onAdd = function(map) {
     var div = L.DomUtil.create('div', 'map-title-box');
+    div.id = 'titleControlBox';
     div.innerHTML = `
-        <div class="line-1">Lluvia diaria en Costa Rica</div>
-        <div class="line-2">Polígonos de Thiessen</div>
-        <div class="line-3">Fecha datos: __FECHA_DATOS__</div>
-        <div class="line-estaciones">No estaciones: __NUM_ESTACIONES__</div>
-        <div class="line-4">Fuente: IMN Costa Rica</div>
-        <div class="line-5">Datos sin control de calidad</div>
+        <button class="toggle-title-btn" onclick="toggleTitleBox()" id="btnToggleTitle">&lt;&lt;</button>
+        <div id="titleContent">
+            <div class="line-1">Lluvia diaria en Costa Rica</div>
+            <div class="line-2">Polígonos de Thiessen</div>
+            <div class="line-3">Fecha datos: __FECHA_DATOS__</div>
+            <div class="line-estaciones">No estaciones: __NUM_ESTACIONES__</div>
+            <div class="line-4">Fuente: IMN Costa Rica</div>
+            <div class="line-5">Datos sin control de calidad</div>
+        </div>
     `;
+    L.DomEvent.disableClickPropagation(div);
     return div;
 };
 
 titleControl.addTo(map);
+
+function toggleTitleBox() {
+    var content = document.getElementById('titleContent');
+    var btn = document.getElementById('btnToggleTitle');
+    if (content.style.display === 'none') {
+        content.style.display = 'block';
+        btn.innerText = '<<';
+    } else {
+        content.style.display = 'none';
+        btn.innerText = '>>';
+    }
+}
 
 var geojsonVoronoiData = __GEOJSON_VORONOI__;
 var geojsonPuntosData = __GEOJSON_PUNTOS__;
@@ -685,7 +723,6 @@ function agregarSliderTransparencia() {
 
     labels.forEach(function(label) {
         if (label.innerText.includes("Polígonos Voronoi / Thiessen")) {
-            // Verificar si el slider no existe previamente
             if (!label.parentNode.querySelector('.voronoi-opacity-container')) {
                 var sliderBox = document.createElement('div');
                 sliderBox.className = 'voronoi-opacity-container';
@@ -695,7 +732,6 @@ function agregarSliderTransparencia() {
                     <span id="voronoiOpacityVal">75%</span>
                 `;
 
-                // Prevenir que el clic o arrastre sobre el slider altere el evento del checkbox o del mapa
                 L.DomEvent.disableClickPropagation(sliderBox);
                 L.DomEvent.disableScrollPropagation(sliderBox);
 
@@ -719,16 +755,11 @@ function agregarSliderTransparencia() {
     });
 }
 
-// Inyectar el slider cuando se abra o expanda la caja de control de capas
 map.on('layeradd layerremove', agregarSliderTransparencia);
 var containerLayers = layersControl.getContainer();
 containerLayers.addEventListener('mouseenter', agregarSliderTransparencia);
 containerLayers.addEventListener('click', agregarSliderTransparencia);
 setTimeout(agregarSliderTransparencia, 500);
-
-if (capaVoronoi.getBounds().isValid()) {
-    map.fitBounds(capaVoronoi.getBounds(), { padding: [20, 20] });
-}
 </script>
 </body>
 </html>
@@ -823,7 +854,7 @@ def run_streamlit():
         else:
             st.warning(f"⚠️ No hay registros para la fecha `{fecha_str}`. Seleccione un día válido.")
 
-    if st.button("🗺️️ Generar / Actualizar mapa", type="primary", use_container_width=True):
+    if st.button("🗺️ Generar / Actualizar mapa", type="primary", use_container_width=True):
         if fecha_str not in fechas_unicas_str:
             st.error("Por favor selecciona una fecha válida que contenga registros de lluvia.")
             return
