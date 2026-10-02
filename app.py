@@ -335,27 +335,19 @@ html, body {
     background: #555;
 }
 
-/* Panel de título como tarjeta deslizable adosada al borde izquierdo */
-.map-title-card {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 1000;
+/* Caja de Título integrada dentro del control de Leaflet */
+.map-title-box {
     background: rgba(255, 255, 255, 0.94);
     padding: 10px 14px;
     border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     font-family: Arial, sans-serif;
     line-height: 1.35;
-    transition: transform 0.3s ease-in-out;
+    position: relative;
     max-width: 260px;
 }
 
-.map-title-card.collapsed {
-    transform: translateX(calc(-100% - 20px));
-}
-
-.map-title-card .btn-hide {
+.map-title-box .btn-toggle-title {
     position: absolute;
     top: 6px;
     right: 6px;
@@ -370,60 +362,55 @@ html, body {
     box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 
-.map-title-card .btn-hide:hover {
+.map-title-box .btn-toggle-title:hover {
     background: #003d80;
 }
 
-/* Botón flotante pegado al borde izquierdo al colapsar */
-.btn-show-title {
-    position: absolute;
-    top: 12px;
-    left: 0px;
-    z-index: 999;
-    background: #0056b3;
-    color: #ffffff;
-    border: none;
-    border-radius: 0px 4px 4px 0px;
-    padding: 8px 8px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-    display: none;
-}
-
-.btn-show-title:hover {
-    background: #003d80;
-}
-
-.map-title-card .line-1 {
+.map-title-box .line-1 {
     font-size: 15px;
     font-weight: bold;
     color: #000000;
     margin-right: 25px;
 }
-.map-title-card .line-2 {
+.map-title-box .line-2 {
     font-size: 13px;
     font-weight: bold;
     color: #0056b3;
 }
-.map-title-card .line-3 {
+.map-title-box .line-3 {
     font-size: 13px;
     font-weight: bold;
     color: #0056b3;
 }
-.map-title-card .line-estaciones {
+.map-title-box .line-estaciones {
     font-size: 12px;
     font-weight: bold;
     color: #2b7813;
 }
-.map-title-card .line-4 {
+.map-title-box .line-4 {
     font-size: 11px;
     color: #000000;
 }
-.map-title-card .line-5 {
+.map-title-box .line-5 {
     font-size: 11px;
     color: #000000;
+}
+
+/* Estado contraído del título */
+.map-title-box.collapsed {
+    padding: 6px 10px;
+    width: auto;
+    max-width: fit-content;
+}
+
+.map-title-box.collapsed .title-body {
+    display: none;
+}
+
+.map-title-box.collapsed .btn-toggle-title {
+    position: static;
+    font-size: 12px;
+    padding: 4px 8px;
 }
 
 .label-lluvia-container {
@@ -508,20 +495,6 @@ html, body {
 <body>
 <div id="map"></div>
 
-<!-- Tarjeta Flotante de Título -->
-<div class="map-title-card" id="titleCard">
-    <button class="btn-hide" onclick="ocultarTitulo()">&lt;&lt;</button>
-    <div class="line-1">Lluvia diaria en Costa Rica</div>
-    <div class="line-2">Polígonos de Thiessen</div>
-    <div class="line-3">Fecha datos: __FECHA_DATOS__</div>
-    <div class="line-estaciones">No estaciones: __NUM_ESTACIONES__</div>
-    <div class="line-4">Fuente: IMN Costa Rica</div>
-    <div class="line-5">Datos sin control de calidad</div>
-</div>
-
-<!-- Botón lateral para reabrir -->
-<button class="btn-show-title" id="btnShowTitle" onclick="mostrarTitulo()">ℹ️ &gt;&gt;</button>
-
 <script>
 var osmStandard = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -540,27 +513,42 @@ var map = L.map('map', {
     layers: [osmStandard]
 });
 
-// Control visual del título adosado al borde
-function ocultarTitulo() {
-    var card = document.getElementById('titleCard');
-    var btnShow = document.getElementById('btnShowTitle');
-    card.classList.add('collapsed');
-    setTimeout(function() {
-        btnShow.style.display = 'block';
-    }, 200);
-}
+// Control oficial de Leaflet para el Título
+var titleControl = L.control({ position: 'topleft' });
 
-function mostrarTitulo() {
-    var card = document.getElementById('titleCard');
-    var btnShow = document.getElementById('btnShowTitle');
-    btnShow.style.display = 'none';
-    card.classList.remove('collapsed');
-}
+titleControl.onAdd = function(map) {
+    var div = L.DomUtil.create('div', 'map-title-box');
+    div.id = 'titleControlBox';
+    div.innerHTML = `
+        <button class="btn-toggle-title" onclick="toggleTitleBox()" id="btnToggleTitle">&lt;&lt;</button>
+        <div class="title-body" id="titleBody">
+            <div class="line-1">Lluvia diaria en Costa Rica</div>
+            <div class="line-2">Polígonos de Thiessen</div>
+            <div class="line-3">Fecha datos: __FECHA_DATOS__</div>
+            <div class="line-estaciones">No estaciones: __NUM_ESTACIONES__</div>
+            <div class="line-4">Fuente: IMN Costa Rica</div>
+            <div class="line-5">Datos sin control de calidad</div>
+        </div>
+    `;
+    L.DomEvent.disableClickPropagation(div);
+    L.DomEvent.disableScrollPropagation(div);
+    return div;
+};
 
-// Deshabilitar propagación de eventos sobre la tarjeta
-var cardElem = document.getElementById('titleCard');
-L.DomEvent.disableClickPropagation(cardElem);
-L.DomEvent.disableScrollPropagation(cardElem);
+titleControl.addTo(map);
+
+function toggleTitleBox() {
+    var box = document.getElementById('titleControlBox');
+    var btn = document.getElementById('btnToggleTitle');
+    
+    if (box.classList.contains('collapsed')) {
+        box.classList.remove('collapsed');
+        btn.innerText = '<<';
+    } else {
+        box.classList.add('collapsed');
+        btn.innerText = 'ℹ️ Lluvia CR >>';
+    }
+}
 
 var geojsonVoronoiData = __GEOJSON_VORONOI__;
 var geojsonPuntosData = __GEOJSON_PUNTOS__;
