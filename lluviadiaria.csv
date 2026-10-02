@@ -1,497 +1,495 @@
 ﻿Fecha_Captura,Fecha_Datos,Indice,Nombre_Estacion,Region,Latitud_Decimal,Longitud_Decimal,Altitud_msnm,URL,Lluvia_Ayer_7am_a_7am_mm,Origen_Lluvia_ROI,Lluvia_Desde_7am_mm,Temperatura_Actual_C,Sensacion_Termica_C,OCR_Texto,Estado,Duracion_Segundos
-2026-10-02 14:08:11,2026-10-01,1,Automática del Aeropuerto Daniel Oduber en Liberia,Pacifico Norte,10.588889,-85.552222,78,http://www.imn.ac.cr/especial/estacionLiberia.html,12.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+2026-10-02 19:47:13,2026-10-01,1,Automática del Aeropuerto Daniel Oduber en Liberia,Pacifico Norte,10.588889,-85.552222,78,http://www.imn.ac.cr/especial/estacionLiberia.html,12.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-12,2",Éxito,3.7
-2026-10-02 14:08:11,2026-10-01,2,Automática del Aeropuerto Daniel Oduber en Liberia,Pacifico Norte,10.593333,-85.537778,82,http://www.imn.ac.cr/especial/estacionLiberia25.html,15.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+12,2",Éxito,3.66
+2026-10-02 19:47:13,2026-10-01,2,Automática del Aeropuerto Daniel Oduber en Liberia,Pacifico Norte,10.593333,-85.537778,82,http://www.imn.ac.cr/especial/estacionLiberia25.html,15.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-15,8",Éxito,3.69
-2026-10-02 14:08:11,2026-10-01,3,"Automática de Pithaya, Puntarenas, Puntarenas",Pacifico Norte,10.057889,-84.806944,30,http://www.imn.ac.cr/especial/estacionAranjuez.html,7.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+15,8",Éxito,3.64
+2026-10-02 19:47:13,2026-10-01,3,"Automática de Pithaya, Puntarenas, Puntarenas",Pacifico Norte,10.057889,-84.806944,30,http://www.imn.ac.cr/especial/estacionAranjuez.html,7.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-7,2",Éxito,3.67
-2026-10-02 14:08:11,2026-10-01,4,Automática de Sardinal de Carrillo en Guanacaste,Pacifico Norte,10.506667,-85.696028,65,https://www.imn.ac.cr/especial/estacionSardinal.html,10.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+7,2",Éxito,3.64
+2026-10-02 19:47:13,2026-10-01,4,Automática de Sardinal de Carrillo en Guanacaste,Pacifico Norte,10.506667,-85.696028,65,https://www.imn.ac.cr/especial/estacionSardinal.html,10.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-10,4",Éxito,3.02
-2026-10-02 14:08:11,2026-10-01,5,Automática de Guayabo en la Fortuna de Bagaces de Guanacaste,Pacifico Norte,10.715,-85.201111,532,https://www.imn.ac.cr/especial/estacionGuayabo.html,9.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+10,4",Éxito,2.96
+2026-10-02 19:47:13,2026-10-01,5,Automática de Guayabo en la Fortuna de Bagaces de Guanacaste,Pacifico Norte,10.715,-85.201111,532,https://www.imn.ac.cr/especial/estacionGuayabo.html,9.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7a.md
-9,2",Éxito,3.02
-2026-10-02 14:08:11,2026-10-01,6,Automática de Hojancha en Guanacaste,Pacifico Norte,10.031944,-85.405833,374,https://www.imn.ac.cr/especial/estacionPilangosta.html,38.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+9,2",Éxito,2.96
+2026-10-02 19:47:13,2026-10-01,6,Automática de Hojancha en Guanacaste,Pacifico Norte,10.031944,-85.405833,374,https://www.imn.ac.cr/especial/estacionPilangosta.html,38.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-38,4 M",Éxito,3.02
-2026-10-02 14:08:11,2026-10-01,7,Automática de Santa Marta de Hojancha en Guanacaste,Pacifico Norte,9.929722,-85.430278,100,https://www.imn.ac.cr/especial/estacionStaMarta.html,38.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+38,4 M",Éxito,2.96
+2026-10-02 19:47:13,2026-10-01,7,Automática de Santa Marta de Hojancha en Guanacaste,Pacifico Norte,9.929722,-85.430278,100,https://www.imn.ac.cr/especial/estacionStaMarta.html,38.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-38,2",Éxito,2.81
-2026-10-02 14:08:11,2026-10-01,8,Automática Barco Quebradero,Pacifico Norte,9.916111,-85.614444,24,https://www.imn.ac.cr/especial/estacionGarza.html,24.5,ROI_Full_Panel,,,,"er
+38,2",Éxito,2.94
+2026-10-02 19:47:13,2026-10-01,8,Automática Barco Quebradero,Pacifico Norte,9.916111,-85.614444,24,https://www.imn.ac.cr/especial/estacionGarza.html,24.5,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática Barco Quebradero - Garza, Nosara, Guanacaste
-- Esta pági",Éxito,7.46
-2026-10-02 14:08:11,2026-10-01,9,Automática de Huacalito de Filadelfia en Carrillo Guanacaste,Pacifico Norte,10.393056,-85.412778,65,http://www.imn.ac.cr/especial/estacionHuacalito.html,17.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta pági",Éxito,7.17
+2026-10-02 19:47:13,2026-10-01,9,Automática de Huacalito de Filadelfia en Carrillo Guanacaste,Pacifico Norte,10.393056,-85.412778,65,http://www.imn.ac.cr/especial/estacionHuacalito.html,17.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-17,2",Éxito,3.28
-2026-10-02 14:08:11,2026-10-01,10,"Automática de Coopeguanacaste, Bijagua de Upala, Alajuela",Pacifico Norte,10.753167,-85.055583,435,http://www.imn.ac.cr/especial/estacionBijagua.html,54.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+17,2",Éxito,3.11
+2026-10-02 19:47:13,2026-10-01,10,"Automática de Coopeguanacaste, Bijagua de Upala, Alajuela",Pacifico Norte,10.753167,-85.055583,435,http://www.imn.ac.cr/especial/estacionBijagua.html,54.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-54,0",Éxito,5.36
-2026-10-02 14:08:11,2026-10-01,11,"Automática de Copalchí, La Cruz, Guanacaste",Pacifico Norte,11.200028,-85.618583,58,http://www.imn.ac.cr/especial/estacionCopalchi.html,13.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+54,0",Éxito,4.93
+2026-10-02 19:47:13,2026-10-01,11,"Automática de Copalchí, La Cruz, Guanacaste",Pacifico Norte,11.200028,-85.618583,58,http://www.imn.ac.cr/especial/estacionCopalchi.html,13.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-13,4",Éxito,6.67
-2026-10-02 14:08:11,2026-10-01,12,"Automática en Dulce Nombre, Nicoya, Guanacaste",Pacifico Norte,10.095833,-85.478333,180,http://www.imn.ac.cr/especial/estacionPuraVida.html,11.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+13,4",Éxito,6.53
+2026-10-02 19:47:13,2026-10-01,12,"Automática en Dulce Nombre, Nicoya, Guanacaste",Pacifico Norte,10.095833,-85.478333,180,http://www.imn.ac.cr/especial/estacionPuraVida.html,11.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-11,6",Éxito,2.79
-2026-10-02 14:08:11,2026-10-01,13,"Automática de Palo Verde en Bagaces, Guanacaste",Pacifico Norte,10.3475,-85.351111,10,http://www.imn.ac.cr/especial/estacionpaloverde.html,2.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+11,6",Éxito,2.81
+2026-10-02 19:47:13,2026-10-01,13,"Automática de Palo Verde en Bagaces, Guanacaste",Pacifico Norte,10.3475,-85.351111,10,http://www.imn.ac.cr/especial/estacionpaloverde.html,2.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-2,0",Éxito,2.78
-2026-10-02 14:08:11,2026-10-01,14,"Automática de Finca la Ceiba, Nicoya, Guanacaste",Pacifico Norte,10.111361,-85.317611,64,http://www.imn.ac.cr/especial/estacionLaCeiba.html,13.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+2,0",Éxito,2.81
+2026-10-02 19:47:13,2026-10-01,14,"Automática de Finca la Ceiba, Nicoya, Guanacaste",Pacifico Norte,10.111361,-85.317611,64,http://www.imn.ac.cr/especial/estacionLaCeiba.html,13.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-13,0",Éxito,2.78
-2026-10-02 14:08:11,2026-10-01,15,"Automática de Guayabal Mastate, Orotina, Alajuela",Pacifico Norte,9.9175,-84.585278,185,http://www.imn.ac.cr/especial/estacionGmastate.html,14.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+13,0",Éxito,2.81
+2026-10-02 19:47:13,2026-10-01,15,"Automática de Guayabal Mastate, Orotina, Alajuela",Pacifico Norte,9.9175,-84.585278,185,http://www.imn.ac.cr/especial/estacionGmastate.html,14.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-14,2",Éxito,2.78
-2026-10-02 14:08:11,2026-10-01,16,"Automática de Hacienda Mojica, Bagaces, Guanacaste",Pacifico Norte,10.452778,-85.165278,33,http://www.imn.ac.cr/especial/estacionMojica.html,11.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+14,2",Éxito,2.77
+2026-10-02 19:47:13,2026-10-01,16,"Automática de Hacienda Mojica, Bagaces, Guanacaste",Pacifico Norte,10.452778,-85.165278,33,http://www.imn.ac.cr/especial/estacionMojica.html,11.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-11,2",Éxito,2.78
-2026-10-02 14:08:11,2026-10-01,17,"Automática de Hacienda Taboga, Cañas, Guanacaste",Pacifico Norte,10.345833,-85.1775,29,http://www.imn.ac.cr/especial/estacionTaboga.html,4.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+11,2",Éxito,2.76
+2026-10-02 19:47:13,2026-10-01,17,"Automática de Hacienda Taboga, Cañas, Guanacaste",Pacifico Norte,10.345833,-85.1775,29,http://www.imn.ac.cr/especial/estacionTaboga.html,4.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-4.0",Éxito,2.96
-2026-10-02 14:08:11,2026-10-01,18,Automática de la Cruz de Guanacaste,Pacifico Norte,11.054583,-85.633056,241,https://www.imn.ac.cr/especial/estacionLaCruz.html,7.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+4.0",Éxito,2.75
+2026-10-02 19:47:13,2026-10-01,18,Automática de la Cruz de Guanacaste,Pacifico Norte,11.054583,-85.633056,241,https://www.imn.ac.cr/especial/estacionLaCruz.html,7.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-7,2",Éxito,2.71
-2026-10-02 14:08:11,2026-10-01,19,"Automática de Mangarica, Liberia Guanacaste",Pacifico Norte,10.605556,-85.45,134,http://www.imn.ac.cr/especial/estacionMangarica.html,10.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+7,2",Éxito,2.68
+2026-10-02 19:47:13,2026-10-01,19,"Automática de Mangarica, Liberia Guanacaste",Pacifico Norte,10.605556,-85.45,134,http://www.imn.ac.cr/especial/estacionMangarica.html,10.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-10,6 n",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,20,"Automática en el Volcán Orosi;, La Cruz, Guanacaste",Pacifico Norte,10.958778,-85.49575,573,http://www.imn.ac.cr/especial/estacionMaritza.html,13.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+10,6 n",Éxito,2.81
+2026-10-02 19:47:13,2026-10-01,20,"Automática en el Volcán Orosi;, La Cruz, Guanacaste",Pacifico Norte,10.958778,-85.49575,573,http://www.imn.ac.cr/especial/estacionMaritza.html,13.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-13,6",Éxito,3.02
-2026-10-02 14:08:11,2026-10-01,21,"Automática de Ingenio el Viejo, Filadelfia Guanacaste",Pacifico Norte,10.419167,-85.473333,87,http://www.imn.ac.cr/especial/estacionlaGuinea.html,0.8,ROI_Lluvia_Estandar,,,,"De 7 a.m d
+13,6",Éxito,2.71
+2026-10-02 19:47:13,2026-10-01,21,"Automática de Ingenio el Viejo, Filadelfia Guanacaste",Pacifico Norte,10.419167,-85.473333,87,http://www.imn.ac.cr/especial/estacionlaGuinea.html,0.8,ROI_Lluvia_Estandar,,,,"De 7 a.m d
 a 7 a.m de
-0,8 m",Éxito,3.02
-2026-10-02 14:08:11,2026-10-01,22,"Automática de Nicoya, Guanacaste",Pacifico Norte,10.145556,-85.451944,130,http://www.imn.ac.cr/especial/estacionNicoya.html,23.2,ROI_Full_Panel,,,,"er
+0,8 m",Éxito,2.72
+2026-10-02 19:47:13,2026-10-01,22,"Automática de Nicoya, Guanacaste",Pacifico Norte,10.145556,-85.451944,130,http://www.imn.ac.cr/especial/estacionNicoya.html,23.2,ROI_Full_Panel,,,,"er
 /: | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Nicoya, Guanacaste
-- Esta página se autorefresca cad",Éxito,7.4
-2026-10-02 14:08:11,2026-10-01,23,"Automática de Oroceiba, Orotina, Alajuela",Pacifico Norte,9.896667,-84.6,133,http://www.imn.ac.cr/especial/estacionOroceiba.html,8.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se autorefresca cad",Éxito,6.9
+2026-10-02 19:47:13,2026-10-01,23,"Automática de Oroceiba, Orotina, Alajuela",Pacifico Norte,9.896667,-84.6,133,http://www.imn.ac.cr/especial/estacionOroceiba.html,8.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-8,0 m",Éxito,6.04
-2026-10-02 14:08:11,2026-10-01,24,"Automática de Palo Alto, Montezuma, Cañas, Guanacaste",Pacifico Norte,10.664611,-85.080417,467,http://www.imn.ac.cr/especial/estacionMontezuma.html,22.2,ROI_Full_Panel,,,,"er
+8,0 m",Éxito,6.31
+2026-10-02 19:47:13,2026-10-01,24,"Automática de Palo Alto, Montezuma, Cañas, Guanacaste",Pacifico Norte,10.664611,-85.080417,467,http://www.imn.ac.cr/especial/estacionMontezuma.html,22.2,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Palo Alto, Montezuma, Cañas, Guanacaste
-- Esta página",Éxito,10.48
-2026-10-02 14:08:11,2026-10-01,25,"Automática de Paquera, Puntarenas",Pacifico Norte,9.821389,-84.938333,39,http://www.imn.ac.cr/especial/estacionPaquera.html,18.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página",Éxito,10.17
+2026-10-02 19:47:13,2026-10-01,25,"Automática de Paquera, Puntarenas",Pacifico Norte,9.821389,-84.938333,39,http://www.imn.ac.cr/especial/estacionPaquera.html,18.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-18,0",Éxito,6.26
-2026-10-02 14:08:11,2026-10-01,26,"Automática en Sitio el Aromal, Bagaces, Guanacaste",Pacifico Norte,10.395,-85.324444,18,https://www.imn.ac.cr/especial/estacionNegritos.html,5.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+18,0",Éxito,5.99
+2026-10-02 19:47:13,2026-10-01,26,"Automática en Sitio el Aromal, Bagaces, Guanacaste",Pacifico Norte,10.395,-85.324444,18,https://www.imn.ac.cr/especial/estacionNegritos.html,5.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-5,4",Éxito,5.36
-2026-10-02 14:08:11,2026-10-01,27,"Automática de Refugio Nacional de Vida Silvestre Cipancí, Cañas, Guanacaste",Pacifico Norte,10.211944,-85.234444,3,https://www.imn.ac.cr/especial/estacionCipanci.html,8.0,ROI_Lluvia_Opcional,,,,"De 7 a.md
-a7/amd | a De 7 a.r
-8 a 7 a.m
-A
+5,4",Éxito,4.92
+2026-10-02 19:47:13,2026-10-01,27,"Automática de Refugio Nacional de Vida Silvestre Cipancí, Cañas, Guanacaste",Pacifico Norte,10.211944,-85.234444,3,https://www.imn.ac.cr/especial/estacionCipanci.html,0.0,ROI_Lluvia_Opcional,,,,"De 7 a.md
+a7/amd | :-- Y De 7 a.r
+E a 7 a.m
+E
 
-02 04 06 08 8,0
-12",Éxito,2.92
-2026-10-02 14:08:11,2026-10-01,28,Automática de Hacienda Pinilla,Pacifico Norte,10.260083,-85.837778,29,http://www.imn.ac.cr/especial/estacionPinilla.html,6.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+1406 08 10 12 0,0
+o,",Éxito,2.88
+2026-10-02 19:47:13,2026-10-01,28,Automática de Hacienda Pinilla,Pacifico Norte,10.260083,-85.837778,29,http://www.imn.ac.cr/especial/estacionPinilla.html,6.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-6,2",Éxito,2.9
-2026-10-02 14:08:11,2026-10-01,29,"Automática de San Mateo, Alajuela",Pacifico Norte,9.931667,-84.519167,214,http://www.imn.ac.cr/especial/estacionSanMateo.html,23.0,ROI_Full_Panel,,,,"er
+6,2",Éxito,2.86
+2026-10-02 19:47:13,2026-10-01,29,"Automática de San Mateo, Alajuela",Pacifico Norte,9.931667,-84.519167,214,http://www.imn.ac.cr/especial/estacionSanMateo.html,23.0,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de San Mateo, Alajuela
-- Esta página se autorefresca cad",Éxito,7.31
-2026-10-02 14:08:11,2026-10-01,30,"Automática de Santa Cecilia, La Cruz, Guanacaste",Pacifico Norte,11.075167,-85.453444,314,http://www.imn.ac.cr/especial/estacionStacecilia.html,22.7,ROI_Full_Panel,,,,"er
+- Esta página se autorefresca cad",Éxito,7.19
+2026-10-02 19:47:13,2026-10-01,30,"Automática de Santa Cecilia, La Cruz, Guanacaste",Pacifico Norte,11.075167,-85.453444,314,http://www.imn.ac.cr/especial/estacionStacecilia.html,22.7,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Santa Cecilia, La Cruz, Guanacaste
-- Esta página se a",Éxito,10.82
-2026-10-02 14:08:11,2026-10-01,31,"Automática de Santa Elena, La Cruz, Guanacaste",Pacifico Norte,10.919972,-85.610667,282,http://www.imn.ac.cr/especial/estacionStaElena.html,12.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se a",Éxito,10.23
+2026-10-02 19:47:13,2026-10-01,31,"Automática de Santa Elena, La Cruz, Guanacaste",Pacifico Norte,10.919972,-85.610667,282,http://www.imn.ac.cr/especial/estacionStaElena.html,12.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-12,4",Éxito,5.3
-2026-10-02 14:08:11,2026-10-01,32,Automática de Santa Rita de Nandayure Guanacaste,Pacifico Norte,10.018889,-85.261944,46,http://www.imn.ac.cr/especial/estacionNandayure.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+12,4",Éxito,5.33
+2026-10-02 19:47:13,2026-10-01,32,Automática de Santa Rita de Nandayure Guanacaste,Pacifico Norte,10.018889,-85.261944,46,http://www.imn.ac.cr/especial/estacionNandayure.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-0,0",Éxito,6.44
-2026-10-02 14:08:11,2026-10-01,33,Automática de Santa Rosa Guanacaste,Pacifico Norte,10.841111,-85.619444,301,http://www.imn.ac.cr/especial/estacionstarosa.html,40.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+0,0",Éxito,5.77
+2026-10-02 19:47:13,2026-10-01,33,Automática de Santa Rosa Guanacaste,Pacifico Norte,10.841111,-85.619444,301,http://www.imn.ac.cr/especial/estacionstarosa.html,40.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-40,8 |",Éxito,5.56
-2026-10-02 14:08:11,2026-10-01,34,"Automática en Sitio La Cruz, Bagaces, Guanacaste",Pacifico Norte,10.483056,-85.414167,20,https://www.imn.ac.cr/especial/estacionSitioLaCruz.html,5.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+40,8 |",Éxito,6.58
+2026-10-02 19:47:13,2026-10-01,34,"Automática en Sitio La Cruz, Bagaces, Guanacaste",Pacifico Norte,10.483056,-85.414167,20,https://www.imn.ac.cr/especial/estacionSitioLaCruz.html,5.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-5,6",Éxito,2.65
-2026-10-02 14:08:11,2026-10-01,35,"Automática de Universidad Invenio, Cañas, Guanacaste",Pacifico Norte,10.476611,-85.059778,321,http://www.imn.ac.cr/especial/estacionInvenio.html,10.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+5,6",Éxito,2.68
+2026-10-02 19:47:13,2026-10-01,35,"Automática de Universidad Invenio, Cañas, Guanacaste",Pacifico Norte,10.476611,-85.059778,321,http://www.imn.ac.cr/especial/estacionInvenio.html,10.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-10,0",Éxito,2.93
-2026-10-02 14:08:11,2026-10-01,36,"Automática de la UCR Santa Cruz, Guanacaste",Pacifico Norte,10.285556,-85.591667,41,http://www.imn.ac.cr/especial/estacionStacruz.html,0.2,ROI_Full_Panel,,,,"De 7 a.m d
+10,0",Éxito,2.72
+2026-10-02 19:47:13,2026-10-01,36,"Automática de la UCR Santa Cruz, Guanacaste",Pacifico Norte,10.285556,-85.591667,41,http://www.imn.ac.cr/especial/estacionStacruz.html,0.1,ROI_Full_Panel,,,,"De 7 a.m d
 a 7 a.m de
-NAN | E De 7 a.r
-"" a /a.m
-— NAN
-0 | CONDICIONES ACTUALES DEL TIEMPO
+NAN | 0% De 7 a.r
+de a 7 a.m
+a NAN
+o, | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de la UCR Santa Cruz, Guanacaste
-- Esta ",Éxito,7.79
-2026-10-02 14:08:11,2026-10-01,37,"Automática de Arunachala, Pérez Zeledón, San José",Pacifico Central,9.409917,-83.83225,1012,http://www.imn.ac.cr/especial/estacionArunachala.html,19.2,ROI_Full_Panel,,,,"er
+- E",Éxito,7.58
+2026-10-02 19:47:13,2026-10-01,37,"Automática de Arunachala, Pérez Zeledón, San José",Pacifico Central,9.409917,-83.83225,1012,http://www.imn.ac.cr/especial/estacionArunachala.html,19.2,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Arunachala, Pérez Zeledón, San José
-- Esta página se ",Éxito,11.36
-2026-10-02 14:08:11,2026-10-01,38,"Automática de Asada San Gabriel, Desamparados, San José",Pacifico Central,9.783833,-84.096306,1525,https://www.imn.ac.cr/especial/estacionSangabriel.html,3.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se ",Éxito,11.59
+2026-10-02 19:47:13,2026-10-01,38,"Automática de Asada San Gabriel, Desamparados, San José",Pacifico Central,9.783833,-84.096306,1525,https://www.imn.ac.cr/especial/estacionSangabriel.html,3.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-3,8",Éxito,5.75
-2026-10-02 14:08:11,2026-10-01,39,Automática del Cerro Buena Vista de Pérez Zeledón,Pacifico Central,9.56,-83.753611,3400,http://www.imn.ac.cr/especial/estacionCM.html,3.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+3,8",Éxito,10.84
+2026-10-02 19:47:13,2026-10-01,39,Automática del Cerro Buena Vista de Pérez Zeledón,Pacifico Central,9.56,-83.753611,3400,http://www.imn.ac.cr/especial/estacionCM.html,3.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-3,0",Éxito,6.35
-2026-10-02 14:08:11,2026-10-01,40,"Automática de El Rodeo, Tarrazú, San José",Pacifico Central,9.676222,-84.018417,1647,http://www.imn.ac.cr/especial/estacionTarrazu.html,16.6,ROI_Full_Panel,,,,"er
+3,0",Éxito,6.69
+2026-10-02 19:47:13,2026-10-01,40,"Automática de El Rodeo, Tarrazú, San José",Pacifico Central,9.676222,-84.018417,1647,http://www.imn.ac.cr/especial/estacionTarrazu.html,16.6,ROI_Full_Panel,,,,"er
 /: | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de El Rodeo, Tarrazú, San José
-- Esta página se autoref",Éxito,9.54
-2026-10-02 14:08:11,2026-10-01,41,"Automática de Finca Damas, Quepos, Puntarenas",Pacifico Central,9.495278,-84.214722,12,http://www.imn.ac.cr/especial/estacionDamas.html,36.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se autoref",Éxito,7.06
+2026-10-02 19:47:13,2026-10-01,41,"Automática de Finca Damas, Quepos, Puntarenas",Pacifico Central,9.495278,-84.214722,12,http://www.imn.ac.cr/especial/estacionDamas.html,36.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-36,8",Éxito,5.86
-2026-10-02 14:08:11,2026-10-01,42,"Automática la Ligia, Parrita, Puntarenas",Pacifico Central,9.512778,-84.333611,6,http://www.imn.ac.cr/especial/estacionligia.html,24.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+36,8",Éxito,3.03
+2026-10-02 19:47:13,2026-10-01,42,"Automática la Ligia, Parrita, Puntarenas",Pacifico Central,9.512778,-84.333611,6,http://www.imn.ac.cr/especial/estacionligia.html,24.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-24,2",Éxito,6.58
-2026-10-02 14:08:11,2026-10-01,43,"Automática de la Lucha, León Cortés, San José",Pacifico Central,9.736667,-84.000556,1740,http://www.imn.ac.cr/especial/estacionLucha.html,1.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+24,2",Éxito,5.23
+2026-10-02 19:47:13,2026-10-01,43,"Automática de la Lucha, León Cortés, San José",Pacifico Central,9.736667,-84.000556,1740,http://www.imn.ac.cr/especial/estacionLucha.html,1.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-1,6",Éxito,2.77
-2026-10-02 14:08:11,2026-10-01,44,"Automática de Marina Pez Vela, Quepos",Pacifico Central,9.426111,-84.170833,3,https://www.imn.ac.cr/especial/estacionquepos.html,34.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+1,6",Éxito,6.47
+2026-10-02 19:47:13,2026-10-01,44,"Automática de Marina Pez Vela, Quepos",Pacifico Central,9.426111,-84.170833,3,https://www.imn.ac.cr/especial/estacionquepos.html,34.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-34,8",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,45,"Automática de Herradura, Garabito, Puntarenas",Pacifico Central,9.65025,-84.666472,6,http://www.imn.ac.cr/especial/estacionHerradura.html,23.9,ROI_Full_Panel,,,,"er
+34,8",Éxito,2.68
+2026-10-02 19:47:13,2026-10-01,45,"Automática de Herradura, Garabito, Puntarenas",Pacifico Central,9.65025,-84.666472,6,http://www.imn.ac.cr/especial/estacionHerradura.html,23.9,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Herradura, Garabito, Puntarenas
-- Esta página se auto",Éxito,7.16
-2026-10-02 14:08:11,2026-10-01,46,"Automática del Parque Nacional la Amistad, Buenos Aires, Puntarenas",Pacifico Sur,9.029167,-83.007778,1370,http://www.imn.ac.cr/especial/estacionAltamira.html,13.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se auto",Éxito,6.76
+2026-10-02 19:47:13,2026-10-01,46,"Automática del Parque Nacional la Amistad, Buenos Aires, Puntarenas",Pacifico Sur,9.029167,-83.007778,1370,http://www.imn.ac.cr/especial/estacionAltamira.html,13.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-13,2",Éxito,6.88
-2026-10-02 14:08:11,2026-10-01,47,"Automática de Cafetalera Giro San Vito, Coto Brus, Puntarenas",Pacifico Sur,8.818056,-82.971111,1011,http://www.imn.ac.cr/especial/estacionGiro.html,19.5,ROI_Full_Panel,,,,"er
+13,2",Éxito,5.78
+2026-10-02 19:47:13,2026-10-01,47,"Automática de Cafetalera Giro San Vito, Coto Brus, Puntarenas",Pacifico Sur,8.818056,-82.971111,1011,http://www.imn.ac.cr/especial/estacionGiro.html,19.5,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Cafetalera Giro San Vito, Coto Brus, Puntarenas
-- Est",Éxito,11.3
-2026-10-02 14:08:11,2026-10-01,48,"Automática de San Vito, Coto Brus",Pacifico Sur,8.832778,-82.952778,1015,http://www.imn.ac.cr/especial/estacionSanVito.html,5.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Est",Éxito,10.04
+2026-10-02 19:47:13,2026-10-01,48,"Automática de San Vito, Coto Brus",Pacifico Sur,8.832778,-82.952778,1015,http://www.imn.ac.cr/especial/estacionSanVito.html,5.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-5,6",Éxito,6.04
-2026-10-02 14:08:11,2026-10-01,49,"Automática de Chirripó, Pérez Zeledón, San José",Pacifico Sur,9.458333,-83.508139,3440,http://www.imn.ac.cr/especial/estacionChirripo.html,11.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+5,6",Éxito,6.11
+2026-10-02 19:47:13,2026-10-01,49,"Automática de Chirripó, Pérez Zeledón, San José",Pacifico Sur,9.458333,-83.508139,3440,http://www.imn.ac.cr/especial/estacionChirripo.html,11.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-11,8",Éxito,6.0
-2026-10-02 14:08:11,2026-10-01,50,"Automática de Coto 49, Corredores, Puntarenas",Pacifico Sur,8.631194,-82.966861,19,http://www.imn.ac.cr/especial/estacionCoto49.html,12.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+11,8",Éxito,5.32
+2026-10-02 19:47:13,2026-10-01,50,"Automática de Coto 49, Corredores, Puntarenas",Pacifico Sur,8.631194,-82.966861,19,http://www.imn.ac.cr/especial/estacionCoto49.html,12.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-12,4",Éxito,2.74
-2026-10-02 14:08:11,2026-10-01,51,"Automática de Puerto Jiménez, Golfito, Puntarenas",Pacifico Sur,8.600972,-83.431167,19,http://www.imn.ac.cr/especial/estacionJimenez.html,4.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+12,4",Éxito,2.7
+2026-10-02 19:47:13,2026-10-01,51,"Automática de Puerto Jiménez, Golfito, Puntarenas",Pacifico Sur,8.600972,-83.431167,19,http://www.imn.ac.cr/especial/estacionJimenez.html,4.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-4,4",Éxito,2.9
-2026-10-02 14:08:11,2026-10-01,52,"Automática de la Fundación Neotrópica, Osa",Pacifico Sur,8.700806,-83.514167,66,http://www.imn.ac.cr/especial/estacionNeotropica.html,23.9,ROI_Full_Panel,,,,"er
+4,4",Éxito,2.82
+2026-10-02 19:47:13,2026-10-01,52,"Automática de la Fundación Neotrópica, Osa",Pacifico Sur,8.700806,-83.514167,66,http://www.imn.ac.cr/especial/estacionNeotropica.html,23.9,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de la Fundación Neotrópica, Osa
-- Esta página se autoref",Éxito,7.54
-2026-10-02 14:08:11,2026-10-01,53,"Automática de Las Brisas, Coto Brus, Puntarenas",Pacifico Sur,8.877361,-82.891,1056,https://www.imn.ac.cr/especial/estacionLasBrisas.html,5.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se autoref",Éxito,7.17
+2026-10-02 19:47:13,2026-10-01,53,"Automática de Las Brisas, Coto Brus, Puntarenas",Pacifico Sur,8.877361,-82.891,1056,https://www.imn.ac.cr/especial/estacionLasBrisas.html,5.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-5,0",Éxito,6.62
-2026-10-02 14:08:11,2026-10-01,54,"Automática de Laurel, Corredores, Puntarenas",Pacifico Sur,8.471611,-82.860611,25,http://www.imn.ac.cr/especial/estacionLaurel.html,19.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+5,0",Éxito,6.15
+2026-10-02 19:47:13,2026-10-01,54,"Automática de Laurel, Corredores, Puntarenas",Pacifico Sur,8.471611,-82.860611,25,http://www.imn.ac.cr/especial/estacionLaurel.html,19.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-19,0",Éxito,5.55
-2026-10-02 14:08:11,2026-10-01,55,"Automática de Montecarlo, Pérez Zeledón, San José",Pacifico Sur,9.358139,-83.601056,975,http://www.imn.ac.cr/especial/estacionMontecarlo.html,27.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+19,0",Éxito,5.23
+2026-10-02 19:47:13,2026-10-01,55,"Automática de Montecarlo, Pérez Zeledón, San José",Pacifico Sur,9.358139,-83.601056,975,http://www.imn.ac.cr/especial/estacionMontecarlo.html,27.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-27,0",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,56,"Automática de Museo Las Esferas, Sierpe de Osa, Puntarenas",Pacifico Sur,8.910639,-83.479333,9,http://www.imn.ac.cr/especial/estacionMuseo.html,10.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+27,0",Éxito,2.7
+2026-10-02 19:47:13,2026-10-01,56,"Automática de Museo Las Esferas, Sierpe de Osa, Puntarenas",Pacifico Sur,8.910639,-83.479333,9,http://www.imn.ac.cr/especial/estacionMuseo.html,10.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-10,0",Éxito,2.91
-2026-10-02 14:08:11,2026-10-01,57,"Automática de Pindeco, Buenos Aires, Puntarenas",Pacifico Sur,9.146222,-83.335,386,http://www.imn.ac.cr/especial/estacionPindeco.html,35.9,ROI_Lluvia_Estandar,,,,"De 7 a.md
+10,0",Éxito,2.84
+2026-10-02 19:47:13,2026-10-01,57,"Automática de Pindeco, Buenos Aires, Puntarenas",Pacifico Sur,9.146222,-83.335,386,http://www.imn.ac.cr/especial/estacionPindeco.html,35.9,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-35,9 |",Éxito,2.91
-2026-10-02 14:08:11,2026-10-01,58,"Automática de Greg Gund, Golfito, Puntarenas",Pacifico Sur,8.411222,-83.320444,235,http://www.imn.ac.cr/especial/estacionGreggund.html,21.59,ROI_Full_Panel,,,,"er
+35,9 |",Éxito,2.84
+2026-10-02 19:47:13,2026-10-01,58,"Automática de Greg Gund, Golfito, Puntarenas",Pacifico Sur,8.411222,-83.320444,235,http://www.imn.ac.cr/especial/estacionGreggund.html,21.59,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Greg Gund, Golfito, Puntarenas
-- Esta página se autor",Éxito,7.42
-2026-10-02 14:08:11,2026-10-01,59,"Automática de Río Claro, Golfito, Puntarenas",Pacifico Sur,8.674056,-83.062056,31,https://www.imn.ac.cr/especial/estacionRioclaro.html,56.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se autor",Éxito,6.94
+2026-10-02 19:47:13,2026-10-01,59,"Automática de Río Claro, Golfito, Puntarenas",Pacifico Sur,8.674056,-83.062056,31,https://www.imn.ac.cr/especial/estacionRioclaro.html,56.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-56,6",Éxito,6.63
-2026-10-02 14:08:11,2026-10-01,60,Automática de ADIFORT en la Fortuna de San Carlos,Zona Norte,10.4675,-84.646944,266,http://www.imn.ac.cr/especial/estacionfortuna.html,6.2,ROI_Lluvia_Estandar,,,,"e 7 a.m de
+56,6",Éxito,6.2
+2026-10-02 19:47:13,2026-10-01,60,Automática de ADIFORT en la Fortuna de San Carlos,Zona Norte,10.4675,-84.646944,266,http://www.imn.ac.cr/especial/estacionfortuna.html,6.2,ROI_Lluvia_Estandar,,,,"e 7 a.m de
 7 a.m de
-6,2 m",Éxito,7.09
-2026-10-02 14:08:11,2026-10-01,61,"Automática de Aeródromo Zona Norte, San Carlos, Alajuela",Zona Norte,10.493,-84.421194,76,http://www.imn.ac.cr/especial/estacionAeropzn.html,41.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+6,2 m",Éxito,6.64
+2026-10-02 19:47:13,2026-10-01,61,"Automática de Aeródromo Zona Norte, San Carlos, Alajuela",Zona Norte,10.493,-84.421194,76,http://www.imn.ac.cr/especial/estacionAeropzn.html,41.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7a.md
-41,2",Éxito,2.77
-2026-10-02 14:08:11,2026-10-01,62,Automática San Rafael de Guatuso de Alajuela,Zona Norte,10.686111,-84.910278,160,https://www.imn.ac.cr/especial/estacionGuatuso.html,11.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+41,2",Éxito,2.72
+2026-10-02 19:47:13,2026-10-01,62,Automática San Rafael de Guatuso de Alajuela,Zona Norte,10.686111,-84.910278,160,https://www.imn.ac.cr/especial/estacionGuatuso.html,11.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-11,8 1",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,63,"Automática de Balsa, San Ramón, Alajuela",Zona Norte,10.174444,-84.496944,1113,http://www.imn.ac.cr/especial/estacionBalsa.html,2.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+11,8 1",Éxito,2.69
+2026-10-02 19:47:13,2026-10-01,63,"Automática de Balsa, San Ramón, Alajuela",Zona Norte,10.174444,-84.496944,1113,http://www.imn.ac.cr/especial/estacionBalsa.html,2.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-2,0",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,64,"Automática de Betania, Cutris, San Carlos, Alajuela",Zona Norte,10.644472,-84.382083,89,http://www.imn.ac.cr/especial/estacionBetania.html,7.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+2,0",Éxito,2.72
+2026-10-02 19:47:13,2026-10-01,64,"Automática de Betania, Cutris, San Carlos, Alajuela",Zona Norte,10.644472,-84.382083,89,http://www.imn.ac.cr/especial/estacionBetania.html,7.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-7.6",Éxito,2.77
-2026-10-02 14:08:11,2026-10-01,65,"Automática de Comando Sarapiquí, Sarapiquí, Heredia",Zona Norte,10.445139,-84.005056,48,http://www.imn.ac.cr/especial/estacionSarapiqui.html,1.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+7.6",Éxito,2.71
+2026-10-02 19:47:13,2026-10-01,65,"Automática de Comando Sarapiquí, Sarapiquí, Heredia",Zona Norte,10.445139,-84.005056,48,http://www.imn.ac.cr/especial/estacionSarapiqui.html,1.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-1,2",Éxito,2.77
-2026-10-02 14:08:11,2026-10-01,66,"Automática de El Bosque, Río Tirimbina, La Virgen de Sarapiquí, Heredia",Zona Norte,10.417222,-84.125361,200,http://www.imn.ac.cr/especial/estacionTirimbina.html,22.7,ROI_Full_Panel,,,,"er
+1,2",Éxito,2.73
+2026-10-02 19:47:13,2026-10-01,66,"Automática de El Bosque, Río Tirimbina, La Virgen de Sarapiquí, Heredia",Zona Norte,10.417222,-84.125361,200,http://www.imn.ac.cr/especial/estacionTirimbina.html,22.7,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
-Estación Automática de El Bosque, Río Tirimbina, La Virgen de Sarapiquí, Her",Éxito,7.0
-2026-10-02 14:08:11,2026-10-01,67,"Automática de Finca Brasilia del Oro, Upala, Alajuela",Zona Norte,10.98325,-85.347222,381,http://www.imn.ac.cr/especial/estacionBrasilia.html,20.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+Estación Automática de El Bosque, Río Tirimbina, La Virgen de Sarapiquí, Her",Éxito,6.89
+2026-10-02 19:47:13,2026-10-01,67,"Automática de Finca Brasilia del Oro, Upala, Alajuela",Zona Norte,10.98325,-85.347222,381,http://www.imn.ac.cr/especial/estacionBrasilia.html,20.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-20,4",Éxito,5.86
-2026-10-02 14:08:11,2026-10-01,68,"Automática Hidroeléctrica El General, Horquetas de Sarapiquí, Heredia",Zona Norte,10.203639,-83.933167,483,http://www.imn.ac.cr/especial/estacionHidroelectrica.html,3.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+20,4",Éxito,5.71
+2026-10-02 19:47:13,2026-10-01,68,"Automática Hidroeléctrica El General, Horquetas de Sarapiquí, Heredia",Zona Norte,10.203639,-83.933167,483,http://www.imn.ac.cr/especial/estacionHidroelectrica.html,3.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-3,0",Éxito,5.6
-2026-10-02 14:08:11,2026-10-01,69,"Automática de Horquetas de Sarapiquí, Heredia",Zona Norte,10.309361,-83.946278,121,http://www.imn.ac.cr/especial/estacionHorquetas.html,22.4,ROI_Full_Panel,,,,"er
+3,0",Éxito,5.52
+2026-10-02 19:47:13,2026-10-01,69,"Automática de Horquetas de Sarapiquí, Heredia",Zona Norte,10.309361,-83.946278,121,http://www.imn.ac.cr/especial/estacionHorquetas.html,22.4,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
-Estación Automática de Horquetas de Sarapiquí, Heredia
-- Esta página se auto",Éxito,7.11
-2026-10-02 14:08:11,2026-10-01,70,"Automática de Hotel Pozo Azul, Sarapiquí, Heredia",Zona Norte,10.385806,-84.139556,208,http://www.imn.ac.cr/especial/estacionPozoazul.html,21.3,ROI_Full_Panel,,,,"er
+Estación Automática de Horquetas de Sarapiqui, Heredia
+- Esta página se auto",Éxito,6.92
+2026-10-02 19:47:13,2026-10-01,70,"Automática de Hotel Pozo Azul, Sarapiquí, Heredia",Zona Norte,10.385806,-84.139556,208,http://www.imn.ac.cr/especial/estacionPozoazul.html,21.3,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Hotel Pozo Azul, Sarapiquí, Heredia
-- Esta página se ",Éxito,10.91
-2026-10-02 14:08:11,2026-10-01,71,"Automática de Hotel Villa Blanca, San Ramón, Alajuela",Zona Norte,10.202778,-84.483889,1125,http://www.imn.ac.cr/especial/estacionVblanca.html,3.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se ",Éxito,10.81
+2026-10-02 19:47:13,2026-10-01,71,"Automática de Hotel Villa Blanca, San Ramón, Alajuela",Zona Norte,10.202778,-84.483889,1125,http://www.imn.ac.cr/especial/estacionVblanca.html,3.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7a.md
-3,0",Éxito,6.78
-2026-10-02 14:08:11,2026-10-01,72,"Automática del TEC, Sede Santa Clara, San Carlos, Alajuela",Zona Norte,10.360611,-84.513444,167,http://www.imn.ac.cr/especial/estacionStaClara.html,14.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+3,0",Éxito,6.38
+2026-10-02 19:47:13,2026-10-01,72,"Automática del TEC, Sede Santa Clara, San Carlos, Alajuela",Zona Norte,10.360611,-84.513444,167,http://www.imn.ac.cr/especial/estacionStaClara.html,14.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-14,6 1",Éxito,5.4
-2026-10-02 14:08:11,2026-10-01,73,"Automática Finca la Rebusca, Puerto Viejo, Heredia",Zona Norte,10.474528,-84.009111,40,http://www.imn.ac.cr/especial/estacionRebusca.html,44.0,ROI_Full_Panel,,,,"| | E
-E
-|
-l | CONDICIONES ACTUALES DEL TIEMPO
+14,6 1",Éxito,5.83
+2026-10-02 19:47:13,2026-10-01,73,"Automática Finca la Rebusca, Puerto Viejo, Heredia",Zona Norte,10.474528,-84.009111,40,http://www.imn.ac.cr/especial/estacionRebusca.html,44.0,ROI_Full_Panel,,,,"| | 3
+o a 44. | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática Finca la Rebusca, Puerto Viejo, Heredia
-- Esta página se autorefresca cada minuto y ",Éxito,11.75
-2026-10-02 14:08:11,2026-10-01,74,"Automática del en el Volcán Poás, Alajuela",Zona Norte,10.189167,-84.231667,2598,https://www.imn.ac.cr/especial/estacionPoas.html,6.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se autorefresca cada minuto ",Éxito,9.9
+2026-10-02 19:47:13,2026-10-01,74,"Automática del en el Volcán Poás, Alajuela",Zona Norte,10.189167,-84.231667,2598,https://www.imn.ac.cr/especial/estacionPoas.html,6.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7a.md
-6,6",Éxito,3.01
-2026-10-02 14:08:11,2026-10-01,75,"Automática Las Delicias en San Carlos, Alajuela",Zona Norte,10.444167,-84.315,140,http://www.imn.ac.cr/especial/estacionDelicias.html,0.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+6,6",Éxito,6.21
+2026-10-02 19:47:13,2026-10-01,75,"Automática Las Delicias en San Carlos, Alajuela",Zona Norte,10.444167,-84.315,140,http://www.imn.ac.cr/especial/estacionDelicias.html,0.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-0,4",Éxito,7.16
-2026-10-02 14:08:11,2026-10-01,76,Automática de los Chiles de Alajuela,Zona Norte,11.031611,-84.711528,40,http://www.imn.ac.cr/especial/estacionChiles.html,5.6,ROI_Lluvia_Estandar,,,,"De 7 amd
+0,4",Éxito,6.86
+2026-10-02 19:47:13,2026-10-01,76,Automática de los Chiles de Alajuela,Zona Norte,11.031611,-84.711528,40,http://www.imn.ac.cr/especial/estacionChiles.html,5.6,ROI_Lluvia_Estandar,,,,"De 7 amd
 a7a.md
-5,6",Éxito,7.15
-2026-10-02 14:08:11,2026-10-01,77,"Automática San Gerardo, La Virgen de Sarapiquí, Heredia",Zona Norte,10.415944,-84.158083,178,http://www.imn.ac.cr/especial/estacionSanGerardo.html,23.1,ROI_Full_Panel,,,,"er
+5,6",Éxito,2.72
+2026-10-02 19:47:13,2026-10-01,77,"Automática San Gerardo, La Virgen de Sarapiquí, Heredia",Zona Norte,10.415944,-84.158083,178,http://www.imn.ac.cr/especial/estacionSanGerardo.html,23.1,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática San Gerardo, La Virgen de Sarapiqui, Heredia
-- Esta pági",Éxito,7.27
-2026-10-02 14:08:11,2026-10-01,78,"Automática de San Vicente, Ciudad Quesada, Alajuela",Zona Norte,10.279722,-84.394444,1431,http://www.imn.ac.cr/especial/estacionSanVicente.html,17.59,ROI_Full_Panel,,,,"er
+- Esta pági",Éxito,6.87
+2026-10-02 19:47:13,2026-10-01,78,"Automática de San Vicente, Ciudad Quesada, Alajuela",Zona Norte,10.279722,-84.394444,1431,http://www.imn.ac.cr/especial/estacionSanVicente.html,17.59,ROI_Full_Panel,,,,"er
 /: | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de San Vicente, Ciudad Quesada, Alajuela
-- Esta página ",Éxito,11.19
-2026-10-02 14:08:11,2026-10-01,79,"Automática de Upala, Alajuela",Zona Norte,10.880833,-85.0725,60,http://www.imn.ac.cr/especial/estacionupala.html,28.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página ",Éxito,10.26
+2026-10-02 19:47:13,2026-10-01,79,"Automática de Upala, Alajuela",Zona Norte,10.880833,-85.0725,60,http://www.imn.ac.cr/especial/estacionupala.html,28.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-28,4",Éxito,9.18
-2026-10-02 14:08:11,2026-10-01,80,"Automática de Volcán Tenorio, Guatuso, Alajuela",Zona Norte,10.715556,-84.986944,680,http://www.imn.ac.cr/especial/estacionTenorio.html,36.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+28,4",Éxito,5.68
+2026-10-02 19:47:13,2026-10-01,80,"Automática de Volcán Tenorio, Guatuso, Alajuela",Zona Norte,10.715556,-84.986944,680,http://www.imn.ac.cr/especial/estacionTenorio.html,36.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-36,0",Éxito,6.66
-2026-10-02 14:08:11,2026-10-01,81,Automática del Tiempo Aeropuerto Juan Santamaría,Valle Central,9.989167,-84.218333,897,http://www.imn.ac.cr/especial/estacioncoco.html,34.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+36,0",Éxito,6.0
+2026-10-02 19:47:13,2026-10-01,81,Automática del Tiempo Aeropuerto Juan Santamaría,Valle Central,9.989167,-84.218333,897,http://www.imn.ac.cr/especial/estacioncoco.html,34.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-34,6",Éxito,2.78
-2026-10-02 14:08:11,2026-10-01,82,Automática del Aeropuerto Juan Santamaría,Valle Central,9.995278,-84.201944,917,http://www.imn.ac.cr/especial/estacioncoco25.html,12.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+34,6",Éxito,5.16
+2026-10-02 19:47:13,2026-10-01,82,Automática del Aeropuerto Juan Santamaría,Valle Central,9.995278,-84.201944,917,http://www.imn.ac.cr/especial/estacioncoco25.html,12.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-12,4",Éxito,2.82
-2026-10-02 14:08:11,2026-10-01,83,Automática del Aeropuerto Tobías Bolaños en Pavas Oeste 09,Valle Central,9.957306,-84.147667,997,http://www.imn.ac.cr/especial/estacionAitbp09.html,24.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+12,4",Éxito,2.7
+2026-10-02 19:47:13,2026-10-01,83,Automática del Aeropuerto Tobías Bolaños en Pavas Oeste 09,Valle Central,9.957306,-84.147667,997,http://www.imn.ac.cr/especial/estacionAitbp09.html,24.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-24,2",Éxito,2.8
-2026-10-02 14:08:11,2026-10-01,84,Automática de Alfredo Volio en Cartago,Valle Central,9.908611,-83.954778,1592,http://www.imn.ac.cr/especial/estacionAlfredoVolio.html,5.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+24,2",Éxito,2.7
+2026-10-02 19:47:13,2026-10-01,84,Automática de Alfredo Volio en Cartago,Valle Central,9.908611,-83.954778,1592,http://www.imn.ac.cr/especial/estacionAlfredoVolio.html,5.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-5,6",Éxito,2.83
-2026-10-02 14:08:11,2026-10-01,85,"Automática de Barrancas, El Guarco, Cartago",Valle Central,9.838264,-83.963389,1400,http://www.imn.ac.cr/especial/estacionBarrancas.html,18.2,ROI_Full_Panel,,,,"er
+5,6",Éxito,2.87
+2026-10-02 19:47:13,2026-10-01,85,"Automática de Barrancas, El Guarco, Cartago",Valle Central,9.838264,-83.963389,1400,http://www.imn.ac.cr/especial/estacionBarrancas.html,18.2,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Barrancas, El Guarco, Cartago
-- Esta página se autore",Éxito,7.43
-2026-10-02 14:08:11,2026-10-01,86,"Automática de Belén, Heredia",Valle Central,9.975,-84.185556,926,http://www.imn.ac.cr/especial/estacionBelen.html,16.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se autore",Éxito,6.63
+2026-10-02 19:47:13,2026-10-01,86,"Automática de Belén, Heredia",Valle Central,9.975,-84.185556,926,http://www.imn.ac.cr/especial/estacionBelen.html,16.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-16,6",Éxito,6.12
-2026-10-02 14:08:11,2026-10-01,87,"Automática de Biblioteca RAAG, Municipalidad de San José",Valle Central,9.912778,-84.058056,1200,https://www.imn.ac.cr/especial/estacionBibliotecaMSJ.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+16,6",Éxito,6.0
+2026-10-02 19:47:13,2026-10-01,87,"Automática de Biblioteca RAAG, Municipalidad de San José",Valle Central,9.912778,-84.058056,1200,https://www.imn.ac.cr/especial/estacionBibliotecaMSJ.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-0,0",Éxito,5.78
-2026-10-02 14:08:11,2026-10-01,88,"Automática El Burío, Aserrí, San José",Valle Central,9.840278,-84.1125,1811,http://www.imn.ac.cr/especial/estacionBurio.html,3.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+0,0",Éxito,6.31
+2026-10-02 19:47:13,2026-10-01,88,"Automática El Burío, Aserrí, San José",Valle Central,9.840278,-84.1125,1811,http://www.imn.ac.cr/especial/estacionBurio.html,3.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-3,4",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,89,"Automática de Cerro Cedral, Escazú, San José",Valle Central,9.861417,-84.145889,2255,http://www.imn.ac.cr/especial/estacionCedral.html,5.4,ROI_Lluvia_Opcional,,,,"De 7 a.md
+3,4",Éxito,2.7
+2026-10-02 19:47:13,2026-10-01,89,"Automática de Cerro Cedral, Escazú, San José",Valle Central,9.861417,-84.145889,2255,http://www.imn.ac.cr/especial/estacionCedral.html,5.4,ROI_Lluvia_Opcional,,,,"De 7 a.md
 a7/amd
 5/4 | Ó De 7 a.r
 3 a 7 a.m
 JO e. _
 
 8 20 22 00 02 5,4
-5",Éxito,3.19
-2026-10-02 14:08:11,2026-10-01,90,"Automática de Cerro Chitaria, Santa Ana, San José",Valle Central,9.891667,-84.193694,1717,http://www.imn.ac.cr/especial/estacionchitaria.html,23.9,ROI_Lluvia_Estandar,,,,"5718
-23,9",Éxito,3.13
-2026-10-02 14:08:11,2026-10-01,91,Automática de Cerro Juco de Orosi en Paraiso de Cartago,Valle Central,9.775417,-83.86475,1735,http://www.imn.ac.cr/especial/estacionJuco.html,7.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+5",Éxito,2.98
+2026-10-02 19:47:13,2026-10-01,90,"Automática de Cerro Chitaria, Santa Ana, San José",Valle Central,9.891667,-84.193694,1717,http://www.imn.ac.cr/especial/estacionchitaria.html,23.9,ROI_Lluvia_Estandar,,,,"5718
+23,9",Éxito,2.71
+2026-10-02 19:47:13,2026-10-01,91,Automática de Cerro Juco de Orosi en Paraiso de Cartago,Valle Central,9.775417,-83.86475,1735,http://www.imn.ac.cr/especial/estacionJuco.html,7.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-7,0",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,92,"Automática de CIGEFI en Montes de Oca, San José",Valle Central,9.936389,-84.045278,1210,http://www.imn.ac.cr/especial/estacionCigefi.html,9.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+7,0",Éxito,2.75
+2026-10-02 19:47:13,2026-10-01,92,"Automática de CIGEFI en Montes de Oca, San José",Valle Central,9.936389,-84.045278,1210,http://www.imn.ac.cr/especial/estacionCigefi.html,9.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-9,2",Éxito,2.93
-2026-10-02 14:08:11,2026-10-01,93,"Automática Ciudad de los Niños, Paraiso, Cartago",Valle Central,9.834167,-83.921111,1338,https://www.imn.ac.cr/especial/estacionCiudadninos.html,6.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+9,2",Éxito,2.71
+2026-10-02 19:47:13,2026-10-01,93,"Automática Ciudad de los Niños, Paraiso, Cartago",Valle Central,9.834167,-83.921111,1338,https://www.imn.ac.cr/especial/estacionCiudadninos.html,6.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-6,8",Éxito,2.67
-2026-10-02 14:08:11,2026-10-01,94,"Automática de Ciudad Judicial, San Joaquín, Heredia",Valle Central,10.006944,-84.163889,1023,http://www.imn.ac.cr/especial/estacionJudicial.html,9.9,ROI_Lluvia_Estandar,,,,"De 7 a.md
+6,8",Éxito,2.75
+2026-10-02 19:47:13,2026-10-01,94,"Automática de Ciudad Judicial, San Joaquín, Heredia",Valle Central,10.006944,-84.163889,1023,http://www.imn.ac.cr/especial/estacionJudicial.html,9.9,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-9,9",Éxito,2.73
-2026-10-02 14:08:11,2026-10-01,95,"Automática Centro Recuperacion Residuos Valorizables, Municipalidad de Santa Ana, San José",Valle Central,9.945403,-84.217172,830,http://www.imn.ac.cr/especial/estacionMuniStaAna.html,22.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+9,9",Éxito,2.7
+2026-10-02 19:47:13,2026-10-01,95,"Automática Centro Recuperacion Residuos Valorizables, Municipalidad de Santa Ana, San José",Valle Central,9.945403,-84.217172,830,http://www.imn.ac.cr/especial/estacionMuniStaAna.html,22.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
 22,8 |",Éxito,2.75
-2026-10-02 14:08:11,2026-10-01,96,"Automática Linda Vista, Dulce Nombre, Cartago",Valle Central,9.838553,-83.908275,1380,https://www.imn.ac.cr/especial/estacionLindaVistadn.html,19.0,ROI_Full_Panel,,,,"er
-/: | De 7 a.m de ayer
+2026-10-02 19:47:13,2026-10-01,96,"Automática Linda Vista, Dulce Nombre, Cartago",Valle Central,9.838553,-83.908275,1380,https://www.imn.ac.cr/especial/estacionLindaVistadn.html,19.0,ROI_Full_Panel,,,,"er
+E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática Linda Vista, Dulce Nombre, Cartago
-- Esta página se aut",Éxito,7.04
-2026-10-02 14:08:11,2026-10-01,97,Automática Fabio Baudrit,Valle Central,10.005,-84.265556,840,http://www.imn.ac.cr/especial/estacionFABIO.html,23.2,ROI_Lluvia_Estandar,,,,"De 7a.md
+- Esta página se auto",Éxito,6.91
+2026-10-02 19:47:13,2026-10-01,97,Automática Fabio Baudrit,Valle Central,10.005,-84.265556,840,http://www.imn.ac.cr/especial/estacionFABIO.html,23.2,ROI_Lluvia_Estandar,,,,"De 7a.md
 a7/amd
-23,2",Éxito,6.84
-2026-10-02 14:08:11,2026-10-01,98,"Automática de Finca Los Lotes, Unión, Cartago",Valle Central,9.936208,-83.972425,1579,https://www.imn.ac.cr/especial/estacionLoslotes.html,16.5,ROI_Full_Panel,,,,"er
+23,2",Éxito,5.88
+2026-10-02 19:47:13,2026-10-01,98,"Automática de Finca Los Lotes, Unión, Cartago",Valle Central,9.936208,-83.972425,1579,https://www.imn.ac.cr/especial/estacionLoslotes.html,16.5,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Finca Los Lotes, Unión, Cartago
-- Esta página se auto",Éxito,9.81
-2026-10-02 14:08:11,2026-10-01,99,"Automática de Finca los Macayas, Goicoechea, San José",Valle Central,9.968611,-83.971278,1685,http://www.imn.ac.cr/especial/estacionMacaya.html,15.1,ROI_Full_Panel,,,,"er
+- Esta página se auto",Éxito,9.43
+2026-10-02 19:47:13,2026-10-01,99,"Automática de Finca los Macayas, Goicoechea, San José",Valle Central,9.968611,-83.971278,1685,http://www.imn.ac.cr/especial/estacionMacaya.html,15.1,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Finca los Macayas, Goicoechea, San José
-- Esta página",Éxito,10.46
-2026-10-02 14:08:11,2026-10-01,100,Automática en el IMN en San José,Valle Central,9.937944,-84.069722,1172,http://www.imn.ac.cr/especial/estacion.html,15.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página",Éxito,10.0
+2026-10-02 19:47:13,2026-10-01,100,Automática en el IMN en San José,Valle Central,9.937944,-84.069722,1172,http://www.imn.ac.cr/especial/estacion.html,15.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-15,8",Éxito,10.28
-2026-10-02 14:08:11,2026-10-01,101,"Automática del Instituto Tecnológico de Costa Rica, Cartago",Valle Central,9.852222,-83.908611,1360,http://www.imn.ac.cr/especial/estacionCartago.html,4.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+15,8",Éxito,9.9
+2026-10-02 19:47:13,2026-10-01,101,"Automática del Instituto Tecnológico de Costa Rica, Cartago",Valle Central,9.852222,-83.908611,1360,http://www.imn.ac.cr/especial/estacionCartago.html,4.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-4,4",Éxito,6.09
-2026-10-02 14:08:11,2026-10-01,102,Automática de Iztarú Tres Rios Cartago,Valle Central,9.889528,-83.968944,1680,http://www.imn.ac.cr/especial/estacionIztaru.html,11.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+4,4",Éxito,5.83
+2026-10-02 19:47:13,2026-10-01,102,Automática de Iztarú Tres Rios Cartago,Valle Central,9.889528,-83.968944,1680,http://www.imn.ac.cr/especial/estacionIztaru.html,11.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-11,6",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,103,"Automática de Jaboncillal, Goichoechea, San José",Valle Central,9.955833,-83.981111,1643,http://www.imn.ac.cr/especial/estacionJaboncillal.html,16.6,ROI_Full_Panel,,,,"er
+11,6",Éxito,2.7
+2026-10-02 19:47:13,2026-10-01,103,"Automática de Jaboncillal, Goichoechea, San José",Valle Central,9.955833,-83.981111,1643,http://www.imn.ac.cr/especial/estacionJaboncillal.html,16.6,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Jaboncillal, Goichoechea, San José
-- Esta página se a",Éxito,7.6
-2026-10-02 14:08:11,2026-10-01,104,"Automática de Laguna Fraijanes, Alajuela, Alajuela",Valle Central,10.137222,-84.193333,1740,http://www.imn.ac.cr/especial/estacionFraijanes.html,13.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se a",Éxito,7.03
+2026-10-02 19:47:13,2026-10-01,104,"Automática de Laguna Fraijanes, Alajuela, Alajuela",Valle Central,10.137222,-84.193333,1740,http://www.imn.ac.cr/especial/estacionFraijanes.html,13.8,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-13,8",Éxito,3.08
-2026-10-02 14:08:11,2026-10-01,105,Automática de Llano Grande de Cartago,Valle Central,9.945444,-83.921722,2220,http://www.imn.ac.cr/especial/estacionLlanogrande.html,0.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
+13,8",Éxito,2.98
+2026-10-02 19:47:13,2026-10-01,105,Automática de Llano Grande de Cartago,Valle Central,9.945444,-83.921722,2220,http://www.imn.ac.cr/especial/estacionLlanogrande.html,0.4,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-0,4",Éxito,6.44
-2026-10-02 14:08:11,2026-10-01,106,"Automática del en el Volcán Poás, Alajuela",Valle Central,10.189167,-84.231667,2598,https://www.imn.ac.cr/especial/estacionPoas.html,6.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+0,4",Éxito,5.99
+2026-10-02 19:47:13,2026-10-01,106,"Automática del en el Volcán Poás, Alajuela",Valle Central,10.189167,-84.231667,2598,https://www.imn.ac.cr/especial/estacionPoas.html,6.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7a.md
-6,6",Éxito,7.0
-2026-10-02 14:08:11,2026-10-01,107,"Automática de Pacayas, Alvarado, Cartago",Valle Central,9.915333,-83.804806,1712,http://www.imn.ac.cr/especial/estacionPacayas.html,3.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+6,6",Éxito,4.87
+2026-10-02 19:47:13,2026-10-01,107,"Automática de Pacayas, Alvarado, Cartago",Valle Central,9.915333,-83.804806,1712,http://www.imn.ac.cr/especial/estacionPacayas.html,3.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-3,2",Éxito,2.78
-2026-10-02 14:08:11,2026-10-01,108,"Automática de Patio de Agua, Vásquez de Coronado San José",Valle Central,9.976944,-83.97,1690,http://www.imn.ac.cr/especial/estacionPatio.html,15.8,ROI_Full_Panel,,,,"er
+3,2",Éxito,2.72
+2026-10-02 19:47:13,2026-10-01,108,"Automática de Patio de Agua, Vásquez de Coronado San José",Valle Central,9.976944,-83.97,1690,http://www.imn.ac.cr/especial/estacionPatio.html,15.8,ROI_Full_Panel,,,,"er
 /: | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Patio de Agua, Vásquez de Coronado San José
-- Esta p",Éxito,7.09
-2026-10-02 14:08:11,2026-10-01,109,"Automática Plantel, Municipalidad de San José, San José",Valle Central,9.930278,-84.093333,1137,https://www.imn.ac.cr/especial/estacionPlantelMSJ.html,,No_Detectado,,,,"Oj
+- Esta p",Éxito,10.21
+2026-10-02 19:47:13,2026-10-01,109,"Automática Plantel, Municipalidad de San José, San José",Valle Central,9.930278,-84.093333,1137,https://www.imn.ac.cr/especial/estacionPlantelMSJ.html,,No_Detectado,,,,"Oj
 p: | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática Plantel, Municipalidad de San José, San José
-- Esta pág",Sin_Dato_Lluvia,9.8
-2026-10-02 14:08:11,2026-10-01,110,"Automática de RECOPE La Garita, Alajuela",Valle Central,10.005278,-84.295833,740,http://www.imn.ac.cr/especial/estacionGarita.html,10.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta pág",Sin_Dato_Lluvia,6.31
+2026-10-02 19:47:13,2026-10-01,110,"Automática de RECOPE La Garita, Alajuela",Valle Central,10.005278,-84.295833,740,http://www.imn.ac.cr/especial/estacionGarita.html,10.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-10,6",Éxito,6.07
-2026-10-02 14:08:11,2026-10-01,111,"Automática de Recope, Ochomogo, Cartago",Valle Central,9.894444,-83.938725,1546,https://www.imn.ac.cr/especial/estacionOchomogo.html,1.1,ROI_Lluvia_Estandar,,,,"De 7 a.md
+10,6",Éxito,8.33
+2026-10-02 19:47:13,2026-10-01,111,"Automática de Recope, Ochomogo, Cartago",Valle Central,9.894444,-83.938725,1546,https://www.imn.ac.cr/especial/estacionOchomogo.html,1.1,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-1,1",Éxito,5.22
-2026-10-02 14:08:11,2026-10-01,112,"Automática Residencial Paraíso, Municipalidad de Santa Ana, San José",Valle Central,9.927944,-84.20675,932,https://www.imn.ac.cr/especial/estacionMuniStaAnaParaiso.html,20.3,ROI_Full_Panel,,,,"er
+1,1",Éxito,6.2
+2026-10-02 19:47:13,2026-10-01,112,"Automática Residencial Paraíso, Municipalidad de Santa Ana, San José",Valle Central,9.927944,-84.20675,932,https://www.imn.ac.cr/especial/estacionMuniStaAnaParaiso.html,20.3,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
-Estación Automática Residencial Paraiso, Municipalidad de Santa Ana, San Jos",Éxito,10.63
-2026-10-02 14:08:11,2026-10-01,113,Automática de Santa Bárbara de Heredia,Valle Central,10.033333,-84.165833,1070,http://www.imn.ac.cr/especial/estacionSTB.html,12.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+Estación Automática Residencial Paraiso, Municipalidad de Santa Ana, San Jos",Éxito,6.87
+2026-10-02 19:47:13,2026-10-01,113,Automática de Santa Bárbara de Heredia,Valle Central,10.033333,-84.165833,1070,http://www.imn.ac.cr/especial/estacionSTB.html,12.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-12,2 1",Éxito,7.15
-2026-10-02 14:08:11,2026-10-01,114,"Automática de Santa Lucía, UNA Heredia",Valle Central,10.023,-84.11175,1257,http://www.imn.ac.cr/especial/estacionsantalucia.html,37.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+12,2 1",Éxito,2.93
+2026-10-02 19:47:13,2026-10-01,114,"Automática de Santa Lucía, UNA Heredia",Valle Central,10.023,-84.11175,1257,http://www.imn.ac.cr/especial/estacionsantalucia.html,37.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-37,2",Éxito,6.75
-2026-10-02 14:08:11,2026-10-01,115,"Automática de Potrero Cerrado, Sartalillo de Cartago",Valle Central,9.902222,-83.885833,1943,http://www.imn.ac.cr/especial/estacionPotrero.html,6.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+37,2",Éxito,5.26
+2026-10-02 19:47:13,2026-10-01,115,"Automática de Potrero Cerrado, Sartalillo de Cartago",Valle Central,9.902222,-83.885833,1943,http://www.imn.ac.cr/especial/estacionPotrero.html,6.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-6,0",Éxito,3.01
-2026-10-02 14:08:11,2026-10-01,116,"Automática Universidad de la Paz, Mora, San José",Valle Central,9.920278,-84.272778,818,http://www.imn.ac.cr/especial/estacionUPaz.html,3.0,ROI_Lluvia_Estandar,,,,"De 7 a.m
+6,0",Éxito,6.4
+2026-10-02 19:47:13,2026-10-01,116,"Automática Universidad de la Paz, Mora, San José",Valle Central,9.920278,-84.272778,818,http://www.imn.ac.cr/especial/estacionUPaz.html,3.0,ROI_Lluvia_Estandar,,,,"De 7 a.m
 a7amd
-3,0",Éxito,3.01
-2026-10-02 14:08:11,2026-10-01,117,"Automática de UTN, Atenas, Alajuela",Valle Central,9.935556,-84.379806,437,http://www.imn.ac.cr/especial/estacionUTN.html,1.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+3,0",Éxito,2.74
+2026-10-02 19:47:13,2026-10-01,117,"Automática de UTN, Atenas, Alajuela",Valle Central,9.935556,-84.379806,437,http://www.imn.ac.cr/especial/estacionUTN.html,1.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-1,2",Éxito,2.99
-2026-10-02 14:08:11,2026-10-01,118,"Automática del Volcán Irazú, Alvarado, Cartago",Valle Central,9.98,-83.837806,3331,http://www.imn.ac.cr/especial/estacionVirazu.html,4.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+1,2",Éxito,2.71
+2026-10-02 19:47:13,2026-10-01,118,"Automática del Volcán Irazú, Alvarado, Cartago",Valle Central,9.98,-83.837806,3331,http://www.imn.ac.cr/especial/estacionVirazu.html,4.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-4.0",Éxito,3.0
-2026-10-02 14:08:11,2026-10-01,119,"Automática de Canta Gallo, Cariari, Limón",Caribe Norte,10.496944,-83.671306,31,http://www.imn.ac.cr/especial/estacionCantagallo.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+4.0",Éxito,2.73
+2026-10-02 19:47:13,2026-10-01,119,"Automática de Canta Gallo, Cariari, Limón",Caribe Norte,10.496944,-83.671306,31,http://www.imn.ac.cr/especial/estacionCantagallo.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-0,0",Éxito,3.0
-2026-10-02 14:08:11,2026-10-01,120,"Automática de Caramba Farms, Roxana, Pococí",Caribe Norte,10.268611,-83.746389,113,http://www.imn.ac.cr/especial/estacionRoxana.html,22.4,ROI_Full_Panel,,,,"er
+0,0",Éxito,2.71
+2026-10-02 19:47:13,2026-10-01,120,"Automática de Caramba Farms, Roxana, Pococí",Caribe Norte,10.268611,-83.746389,113,http://www.imn.ac.cr/especial/estacionRoxana.html,22.4,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Caramba Farms, Roxana, Pococí
-- Esta página se autore",Éxito,7.17
-2026-10-02 14:08:11,2026-10-01,121,Automática de La Earth,Caribe Norte,10.212778,-83.76125,10,http://www.imn.ac.cr/especial/estacionearth.html,34.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se autore",Éxito,6.91
+2026-10-02 19:47:13,2026-10-01,121,Automática de La Earth,Caribe Norte,10.212778,-83.76125,10,http://www.imn.ac.cr/especial/estacionearth.html,34.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-34,0",Éxito,5.55
-2026-10-02 14:08:11,2026-10-01,122,"Automática de Fruta de Pan, Guápiles, Limón",Caribe Norte,10.197603,-83.857508,294,https://www.imn.ac.cr/especial/estacionFrutadePan.html,22.0,ROI_Full_Panel,,,,"er
+34,0",Éxito,5.92
+2026-10-02 19:47:13,2026-10-01,122,"Automática de Fruta de Pan, Guápiles, Limón",Caribe Norte,10.197603,-83.857508,294,https://www.imn.ac.cr/especial/estacionFrutadePan.html,22.0,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Fruta de Pan, Guápiles, Limón
-- Esta página se autore",Éxito,9.86
-2026-10-02 14:08:11,2026-10-01,123,"Automática Finca Diamantes, Guápiles, Limón",Caribe Norte,10.211722,-83.771972,262,https://www.imn.ac.cr/especial/estacionGuapiles.html,1.6,ROI_Lluvia_Opcional,,,,"De 7 a.md
+- Esta página se autore",Éxito,10.02
+2026-10-02 19:47:13,2026-10-01,123,"Automática Finca Diamantes, Guápiles, Limón",Caribe Norte,10.211722,-83.771972,262,https://www.imn.ac.cr/especial/estacionGuapiles.html,1.6,ROI_Lluvia_Opcional,,,,"De 7 a.md
 a7amd
 16 | Y De 7 a.r
 3 a 7a.m
 a 1,6
-o,",Éxito,6.37
-2026-10-02 14:08:11,2026-10-01,124,"Automática Rain Forest, Braulio Carrillo, Guápiles, Pococí, Limón",Caribe Norte,10.175944,-83.917917,516,http://www.imn.ac.cr/especial/estacionRainforest.html,20.8,ROI_Full_Panel,,,,"er
+o,",Éxito,6.31
+2026-10-02 19:47:13,2026-10-01,124,"Automática Rain Forest, Braulio Carrillo, Guápiles, Pococí, Limón",Caribe Norte,10.175944,-83.917917,516,http://www.imn.ac.cr/especial/estacionRainforest.html,20.8,ROI_Full_Panel,,,,"er
 p: | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática Rain Forest, Braulio Carrillo, Guápiles, Pococí, Limón
-",Éxito,11.57
-2026-10-02 14:08:11,2026-10-01,125,Automática del Aeropuerto de Limón,Caribe Sur,9.961944,-83.025278,5,https://www.imn.ac.cr/especial/estacionlimon.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+",Éxito,9.67
+2026-10-02 19:47:13,2026-10-01,125,Automática del Aeropuerto de Limón,Caribe Sur,9.961944,-83.025278,5,https://www.imn.ac.cr/especial/estacionlimon.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-0,0 m",Éxito,2.89
-2026-10-02 14:08:11,2026-10-01,126,"Automática de CATIE, Turrialba, Cartago",Caribe Sur,9.891389,-83.653056,610,http://www.imn.ac.cr/especial/estacionCatie.html,0.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
+0,0 m",Éxito,6.01
+2026-10-02 19:47:13,2026-10-01,126,"Automática de CATIE, Turrialba, Cartago",Caribe Sur,9.891389,-83.653056,610,http://www.imn.ac.cr/especial/estacionCatie.html,0.6,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-0,6",Éxito,6.33
-2026-10-02 14:08:11,2026-10-01,127,"Automática CTP La Suiza, Turrialba, Cartago",Caribe Sur,9.852067,-83.617053,616,http://www.imn.ac.cr/especial/estacionCTPlasuiza.html,21.2,ROI_Full_Panel,,,,"er
+0,6",Éxito,6.67
+2026-10-02 19:47:13,2026-10-01,127,"Automática CTP La Suiza, Turrialba, Cartago",Caribe Sur,9.852067,-83.617053,616,http://www.imn.ac.cr/especial/estacionCTPlasuiza.html,21.2,ROI_Full_Panel,,,,"er
 /: | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática CTP La Suiza, Turrialba, Cartago
-- Esta página se autor",Éxito,11.3
-2026-10-02 14:08:11,2026-10-01,128,"Automática Gavilán Canta, Bratsi, Talamanca, Limón",Caribe Sur,9.594806,-83.026056,124,http://www.imn.ac.cr/especial/estacionGavilanCanta.html,0.3,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se autor",Éxito,7.08
+2026-10-02 19:47:13,2026-10-01,128,"Automática Gavilán Canta, Bratsi, Talamanca, Limón",Caribe Sur,9.594806,-83.026056,124,http://www.imn.ac.cr/especial/estacionGavilanCanta.html,0.3,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-0,3m",Éxito,6.78
-2026-10-02 14:08:11,2026-10-01,129,"Automática de Hitoy Cerere, Limón",Caribe Sur,9.673083,-83.024556,170,http://www.imn.ac.cr/especial/estacionHitoy.html,22.8,ROI_Full_Panel,,,,"er
+0,3m",Éxito,6.41
+2026-10-02 19:47:13,2026-10-01,129,"Automática de Hitoy Cerere, Limón",Caribe Sur,9.673083,-83.024556,170,http://www.imn.ac.cr/especial/estacionHitoy.html,22.8,ROI_Full_Panel,,,,"er
 E | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
 Estación Automática de Hitoy Cerere, Limón
-- Esta página se autorefresca cad",Éxito,11.24
-2026-10-02 14:08:11,2026-10-01,130,"Automática de Manzanillo, Talamanca, Limón",Caribe Sur,9.6315,-82.661028,16,http://www.imn.ac.cr/especial/estacionManzanillo.html,0.0,ROI_Lluvia_Opcional,,,,"De 7 a.md
-a 7 a.m de | | De 7 a.r
-| a 7 a.m
-V 02 04 06 08 0,0
-O,",Éxito,5.65
-2026-10-02 14:08:11,2026-10-01,131,"Automática Juan Viñas, Jiménez, Cartago; CONDICIONES ACTUALES DEL TIEMPO Estación Automática dei Juan Viñas, Jiménez, Cartago",Caribe Sur,9.896111,-83.748167,1181,https://www.imn.ac.cr/especial/estacionJuanVinas.html,1.4,ROI_Lluvia_Estandar,,,,"A
+- Esta página se autorefresca cad",Éxito,9.38
+2026-10-02 19:47:13,2026-10-01,130,"Automática de Manzanillo, Talamanca, Limón",Caribe Sur,9.6315,-82.661028,16,http://www.imn.ac.cr/especial/estacionManzanillo.html,0.0,ROI_Full_Panel,,,,"De 7 a.md
+a 7 a.m de | po De 7 a.r
+2% a 7 a.m
+UIBEDDO 10 2 0 nO
+o, | CONDICIONES ACTUALES DEL TIEMPO
+Estación Automática de Manzanillo, ""Talamanca, Li",Éxito,10.2
+2026-10-02 19:47:13,2026-10-01,131,"Automática Juan Viñas, Jiménez, Cartago; CONDICIONES ACTUALES DEL TIEMPO Estación Automática dei Juan Viñas, Jiménez, Cartago",Caribe Sur,9.896111,-83.748167,1181,https://www.imn.ac.cr/especial/estacionJuanVinas.html,1.4,ROI_Lluvia_Estandar,,,,"o
 De 7 a.m de
 a 7 a.m de
 
-1,4 Mm",Éxito,5.45
-2026-10-02 14:08:11,2026-10-01,132,"Automática Maria Luisa, Río Banano, Limón",Caribe Sur,9.894194,-83.107111,84,https://www.imn.ac.cr/especial/estacionMariaLuisa.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+1,4 Mm",Éxito,5.81
+2026-10-02 19:47:13,2026-10-01,132,"Automática Maria Luisa, Río Banano, Limón",Caribe Sur,9.894194,-83.107111,84,https://www.imn.ac.cr/especial/estacionMariaLuisa.html,0.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a 7 a.m de
-0,0 m",Éxito,2.66
-2026-10-02 14:08:11,2026-10-01,133,Automática de Monumento Nacional Guayabo en Turrialba de Cartago,Caribe Sur,9.969444,-83.689167,1105,http://www.imn.ac.cr/especial/estacionMGuayabo.html,0.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+0,0 m",Éxito,6.1
+2026-10-02 19:47:13,2026-10-01,133,Automática de Monumento Nacional Guayabo en Turrialba de Cartago,Caribe Sur,9.969444,-83.689167,1105,http://www.imn.ac.cr/especial/estacionMGuayabo.html,0.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7/amd
-0,2",Éxito,2.9
-2026-10-02 14:08:11,2026-10-01,134,"Automática de Puerto Vargas Talamanca, Limón",Caribe Sur,9.731667,-82.815,10,http://www.imn.ac.cr/especial/estacionPtovargas.html,29.1,ROI_Full_Panel,,,,"er
+0,2",Éxito,6.83
+2026-10-02 19:47:13,2026-10-01,134,"Automática de Puerto Vargas Talamanca, Limón",Caribe Sur,9.731667,-82.815,10,http://www.imn.ac.cr/especial/estacionPtovargas.html,29.1,ROI_Full_Panel,,,,"er
 /: | De 7 a.m de ayer
 a 7 a.m de hoy: | CONDICIONES ACTUALES DEL TIEMPO
-
 Estación Automática de Puerto Vargas Talamanca, Limón
-- Esta página se aut",Éxito,7.49
-2026-10-02 14:08:11,2026-10-01,135,"Automática de Sitio Matas, Turrialba, Cartago",Caribe Sur,9.879167,-83.625833,848,http://www.imn.ac.cr/especial/estacionSitiomata.html,5.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+- Esta página se auto",Éxito,6.58
+2026-10-02 19:47:13,2026-10-01,135,"Automática de Sitio Matas, Turrialba, Cartago",Caribe Sur,9.879167,-83.625833,848,http://www.imn.ac.cr/especial/estacionSitiomata.html,5.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-5,0",Éxito,6.86
-2026-10-02 14:08:11,2026-10-01,136,"Automática de Sixaola, Talamanca, Limón",Caribe Sur,9.5275,-82.633611,99,http://www.imn.ac.cr/especial/estacionSixaola.html,0.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+5,0",Éxito,6.1
+2026-10-02 19:47:13,2026-10-01,136,"Automática de Sixaola, Talamanca, Limón",Caribe Sur,9.5275,-82.633611,99,http://www.imn.ac.cr/especial/estacionSixaola.html,0.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-0,2",Éxito,5.53
-2026-10-02 14:08:11,2026-10-01,137,"Automática de Turrialba, Cartago",Caribe Sur,9.91,-83.678889,630,http://www.imn.ac.cr/especial/estacionturri.html,2.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
+0,2",Éxito,4.79
+2026-10-02 19:47:13,2026-10-01,137,"Automática de Turrialba, Cartago",Caribe Sur,9.91,-83.678889,630,http://www.imn.ac.cr/especial/estacionturri.html,2.0,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-2,0",Éxito,2.76
-2026-10-02 14:08:11,2026-10-01,138,"Automática en el Volcán Turrialba, Turrialba de Cartago",Caribe Sur,10.019167,-83.756389,3343,http://www.imn.ac.cr/especial/estacionVturri.html,2.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
+2,0",Éxito,2.7
+2026-10-02 19:47:13,2026-10-01,138,"Automática en el Volcán Turrialba, Turrialba de Cartago",Caribe Sur,10.019167,-83.756389,3343,http://www.imn.ac.cr/especial/estacionVturri.html,2.2,ROI_Lluvia_Estandar,,,,"De 7 a.md
 a7amd
-2,2",Éxito,2.75
+2,2",Éxito,2.7
