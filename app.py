@@ -432,6 +432,22 @@ html, body {
 .leaflet-control-layers-toggle::after {
     content: "««";
 }
+
+/* Estilo para el slider de opacidad integrado en el control de capas */
+.voronoi-opacity-container {
+    margin-top: 4px;
+    margin-left: 22px;
+    margin-bottom: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #333;
+}
+.voronoi-opacity-container input[type="range"] {
+    width: 100px;
+    vertical-align: middle;
+    margin-left: 4px;
+    cursor: pointer;
+}
 </style>
 </head>
 
@@ -544,7 +560,7 @@ var capaVoronoi = L.geoJSON(geojsonVoronoiData, {
 
         layer.on({
             mouseover: function(e) {
-                e.target.setStyle({ weight: 2.2, color: '#000000', fillOpacity: 0.9 });
+                e.target.setStyle({ weight: 2.2, color: '#000000' });
             },
             mouseout: function(e) {
                 capaVoronoi.resetStyle(e.target);
@@ -658,7 +674,57 @@ var overlayMaps = {
     "Etiquetas de Lluvia (mm)": grupoEtiquetas
 };
 
-L.control.layers(baseMaps, overlayMaps, { collapsed: true }).addTo(map);
+var layersControl = L.control.layers(baseMaps, overlayMaps, { collapsed: true }).addTo(map);
+
+/* =========================================================
+   INYECCIÓN DEL BOTÓN DESLIZANTE DE TRANSPARENCIA PARA VORONOI
+   ========================================================= */
+function agregarSliderTransparencia() {
+    var container = layersControl.getContainer();
+    var labels = container.querySelectorAll('label');
+
+    labels.forEach(function(label) {
+        if (label.innerText.includes("Polígonos Voronoi / Thiessen")) {
+            // Verificar si el slider no existe previamente
+            if (!label.parentNode.querySelector('.voronoi-opacity-container')) {
+                var sliderBox = document.createElement('div');
+                sliderBox.className = 'voronoi-opacity-container';
+                sliderBox.innerHTML = `
+                    <span>Opacidad:</span>
+                    <input type="range" id="voronoiOpacitySlider" min="0" max="100" value="75">
+                    <span id="voronoiOpacityVal">75%</span>
+                `;
+
+                // Prevenir que el clic o arrastre sobre el slider altere el evento del checkbox o del mapa
+                L.DomEvent.disableClickPropagation(sliderBox);
+                L.DomEvent.disableScrollPropagation(sliderBox);
+
+                label.parentNode.insertBefore(sliderBox, label.nextSibling);
+
+                var slider = sliderBox.querySelector('#voronoiOpacitySlider');
+                var valText = sliderBox.querySelector('#voronoiOpacityVal');
+
+                slider.addEventListener('input', function(e) {
+                    var valor = e.target.value;
+                    var opacidad = valor / 100.0;
+                    valText.innerText = valor + '%';
+
+                    capaVoronoi.setStyle({
+                        fillOpacity: opacidad,
+                        opacity: opacidad
+                    });
+                });
+            }
+        }
+    });
+}
+
+// Inyectar el slider cuando se abra o expanda la caja de control de capas
+map.on('layeradd layerremove', agregarSliderTransparencia);
+var containerLayers = layersControl.getContainer();
+containerLayers.addEventListener('mouseenter', agregarSliderTransparencia);
+containerLayers.addEventListener('click', agregarSliderTransparencia);
+setTimeout(agregarSliderTransparencia, 500);
 
 if (capaVoronoi.getBounds().isValid()) {
     map.fitBounds(capaVoronoi.getBounds(), { padding: [20, 20] });
@@ -732,13 +798,11 @@ def run_streamlit():
         st.error("No se encontraron fechas válidas.")
         return
 
-    # Usar el selector de fecha nativo tipo DateInput pero restringido a los días del CSV
     st.subheader("📅 Selección de Fecha")
 
     col_sel, col_info = st.columns([1, 2])
 
     with col_sel:
-        # Convertir lista a objetos de fecha
         fechas_obj = [datetime.strptime(f, "%Y-%m-%d").date() for f in fechas_unicas_str]
         min_date = min(fechas_obj)
         max_date = max(fechas_obj)
@@ -759,7 +823,7 @@ def run_streamlit():
         else:
             st.warning(f"⚠️ No hay registros para la fecha `{fecha_str}`. Seleccione un día válido.")
 
-    if st.button("🗺️ Generar / Actualizar mapa", type="primary", use_container_width=True):
+    if st.button("🗺️️ Generar / Actualizar mapa", type="primary", use_container_width=True):
         if fecha_str not in fechas_unicas_str:
             st.error("Por favor selecciona una fecha válida que contenga registros de lluvia.")
             return
