@@ -2,8 +2,8 @@ name: Scraper Diario Lluvia IMN Costa Rica
 
 on:
   schedule:
-    # 15:00 UTC = 09:00 AM Hora Costa Rica (UTC-6 sin cambio de horario)
-    - cron: '0 15 * * *'
+    # 15:13 UTC = 09:130 AM Hora Costa Rica (UTC-6 sin cambio de horario)
+    - cron: '13 15 * * *'
   workflow_dispatch: # Permite ejecutar el flujo manualmente desde la interfaz de GitHub Actions
 
 permissions:
